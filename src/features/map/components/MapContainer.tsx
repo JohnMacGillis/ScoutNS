@@ -8,6 +8,13 @@ import PulsingMarker from '../../waters/components/PulsingMarker';
 import RiverSection from '../../waters/components/RiverSection';
 import { findMatchingRuleIndex } from '../../waters/services/waterUtils';
 
+// Declare window augmentation for TypeScript
+declare global {
+  interface Window {
+    mapRef?: React.RefObject<any>;
+  }
+}
+
 interface MapContainerProps {
   specialWatersData: Record<string, SpecialWater[]>;
   showSpecialWaters: boolean;
@@ -19,12 +26,23 @@ const MapContainer = ({
   showSpecialWaters,
   mode
 }: MapContainerProps) => {
-  const { selectedZone, setSelectedZone, zoneData } = useZoneState();
+  const { selectedZone, setSelectedZone, zoneData, setShowRegulationsPanel } = useZoneState();
   const { selectedWater, setSelectedWater, setSelectedWaterRule } = useWaterState();
   const [mapLoaded, setMapLoaded] = useState(false);
   const [hoveredZoneId, setHoveredZoneId] = useState<string | null>(null);
   const [zoneGeoData, setZoneGeoData] = useState<any>(null);
   const mapRef = useRef<any>(null);
+
+  // Expose map reference to window for access from other components
+  useEffect(() => {
+    // Make mapRef available globally so RegulationsPanel can access it
+    window.mapRef = mapRef;
+    
+    return () => {
+      // Clean up global reference when component unmounts
+      window.mapRef = undefined;
+    };
+  }, [mapRef.current]);
 
   // Handle water selection
   const handleWaterClick = (water: SpecialWater) => {
@@ -38,15 +56,25 @@ const MapContainer = ({
       // Select the new water
       setSelectedWater(water);
 
+      // Ensure regulations panel is shown
+      if (typeof setShowRegulationsPanel === 'function') {
+        setShowRegulationsPanel(true);
+      }
+
       // Find matching rule if zone data is available
       if (zoneData && zoneData.specialWaters) {
-        const ruleIndex = findMatchingRuleIndex(water, zoneData.specialWaters);
+        try {
+          const ruleIndex = findMatchingRuleIndex(water, zoneData.specialWaters);
 
-        if (ruleIndex !== null && ruleIndex >= 0) {
-          console.log("Found matching rule at index:", ruleIndex);
-          setSelectedWaterRule(zoneData.specialWaters[ruleIndex]);
-        } else {
-          console.log("No matching rule found for water:", water.name);
+          if (ruleIndex !== null && ruleIndex >= 0) {
+            console.log("Found matching rule at index:", ruleIndex);
+            setSelectedWaterRule(zoneData.specialWaters[ruleIndex]);
+          } else {
+            console.log("No matching rule found for water:", water.name);
+            setSelectedWaterRule(null);
+          }
+        } catch (error) {
+          console.error("Error finding matching rule:", error);
           setSelectedWaterRule(null);
         }
       }
@@ -102,6 +130,11 @@ const MapContainer = ({
   const handleZoneClick = (clickedZone: string) => {
     console.log("Zone clicked:", clickedZone);
     setSelectedZone(clickedZone);
+    
+    // Ensure regulations panel is shown when a zone is clicked
+    if (typeof setShowRegulationsPanel === 'function') {
+      setShowRegulationsPanel(true);
+    }
   };
 
   // Don't render special waters until we have a selected zone

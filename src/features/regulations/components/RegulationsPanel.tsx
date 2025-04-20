@@ -65,28 +65,75 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
     };
   }, []);
 
-  // Handle rule selection
+  // NEW: Auto-scroll to the matching rule when selectedWaterRule changes
+  useEffect(() => {
+    if (selectedWaterRule && zoneData && zoneData.specialWaters) {
+      // Find the index of the matching rule
+      const ruleIndex = zoneData.specialWaters.findIndex(
+        (rule: FishingRule) => rule.area === selectedWaterRule.area
+      );
+
+      if (ruleIndex !== -1 && specialWatersRuleRefs.current[ruleIndex]) {
+        console.log("[RegPanel] Scrolling to rule index:", ruleIndex);
+        
+        // Scroll the rule into view with a small delay to ensure DOM is ready
+        setTimeout(() => {
+          specialWatersRuleRefs.current[ruleIndex]?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+          });
+        }, 100);
+      }
+    }
+  }, [selectedWaterRule, zoneData]);
+
+  // Handle rule selection with map navigation
   const handleRuleClick = (rule: FishingRule, _index: number) => {
     console.log("[RegPanel] Rule clicked:", rule);
 
-    // If it's the same rule, toggle off
-    if (selectedWaterRule && rule.area === selectedWaterRule.area) {
-      console.log("[RegPanel] Deselecting current rule");
-      setSelectedWaterRule(null);
-      setSelectedWater(null);
-    } else {
-      console.log("[RegPanel] Selecting new rule");
-      setSelectedWaterRule(rule);
-
+    try {
       // Find matching special water on the map
       const matchingWater = findMatchingSpecialWater(rule);
       console.log("[RegPanel] Matching water found:", !!matchingWater);
 
       if (matchingWater) {
-        setSelectedWater(matchingWater);
+        // If it's the same rule, toggle off
+        if (selectedWaterRule && rule.area === selectedWaterRule.area) {
+          console.log("[RegPanel] Deselecting current rule");
+          setSelectedWaterRule(null);
+          setSelectedWater(null);
+        } else {
+          console.log("[RegPanel] Selecting new rule and navigating to water");
+          setSelectedWaterRule(rule);
+          setSelectedWater(matchingWater);
+
+          // Navigate to the water feature on the map
+          if (window.mapRef && window.mapRef.current) {
+            const map = window.mapRef.current;
+            if (matchingWater.featureType === 'point') {
+              map.flyTo({
+                center: matchingWater.coordinates,
+                zoom: 12,
+                duration: 1000
+              });
+            } else if (matchingWater.featureType === 'linear') {
+              const coords = matchingWater.coordinates;
+              const midIndex = Math.floor(coords.length / 2);
+              map.flyTo({
+                center: coords[midIndex],
+                zoom: 11,
+                duration: 1000
+              });
+            }
+          } else {
+            console.warn("[RegPanel] Map reference not available for navigation");
+          }
+        }
       } else {
-        setSelectedWater(null);
+        console.log("[RegPanel] No matching water found for rule:", rule.area);
       }
+    } catch (error) {
+      console.error("[RegPanel] Error in rule click handler:", error);
     }
   };
 
@@ -323,20 +370,29 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
               root: { borderTop: '2px solid #4d734d' }
             }}
           />
-          {zoneData.specialWaters.map((rule: FishingRule, idx: number) => {
+                      {zoneData.specialWaters.map((rule: FishingRule, idx: number) => {
             if (!rule) return null;
 
             // Check if there's a matching special water marker for this rule
-            const matchingWater = findMatchingSpecialWater(rule);
-            const hasMarker = matchingWater !== null;
+            let matchingWater = null;
+            let hasMarker = false;
+            let regulationType = 'special-season';
+            
+            try {
+              matchingWater = findMatchingSpecialWater(rule);
+              hasMarker = matchingWater !== null;
+              // Get regulation type safely
+              regulationType = matchingWater?.regulationType || 'special-season';
+            } catch (error) {
+              console.error("[RegPanel] Error finding matching water for rule:", rule.area, error);
+            }
+            
             const isHighlighted = selectedWaterRule?.area === rule.area;
-
-            // Get regulation type
-            let regulationType = matchingWater?.regulationType || 'special-season';
 
             // Get the color safely
             const ruleColor = getRegulationColor(regulationType);
 
+            // IMPROVED: Enhanced styling for better visual prominence
             return (
               <div
                 key={`special-${idx}`}
@@ -349,13 +405,19 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
                   backgroundColor: isHighlighted ? 'rgba(255, 255, 255, 0.15)' : 'rgba(255, 255, 255, 0.05)',
                   border: isHighlighted
                     ? `2px solid ${ruleColor}`
-                    : '1px solid #3e5c3e',
+                    : hasMarker 
+                      ? `1px solid ${ruleColor}` 
+                      : '1px solid #3e5c3e',
                   borderRadius: 8,
                   padding: 10,
                   marginBottom: 12,
                   cursor: hasMarker ? 'pointer' : 'default',
                   transition: 'all 0.2s ease',
-                  position: 'relative'
+                  position: 'relative',
+                  // NEW: Box shadow for more emphasis when highlighted
+                  boxShadow: isHighlighted 
+                    ? `0 0 10px ${ruleColor}44` 
+                    : 'none',
                 }}
               >
                 {/* Regulation type indicator */}
@@ -368,7 +430,7 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
                   backgroundColor: ruleColor,
                   borderTopLeftRadius: 7,
                   borderBottomLeftRadius: 7,
-                  opacity: 0.8
+                  opacity: isHighlighted ? 1 : 0.8
                 }} />
 
                 {/* Map pin icon for clickable rules */}
@@ -377,17 +439,35 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
                     position: 'absolute',
                     top: 10,
                     right: 10,
-                    color: ruleColor
+                    color: ruleColor,
+                    // NEW: Add pulsing animation for selected rule
+                    animation: isHighlighted ? 'pulse 1.5s infinite' : 'none'
                   }}>
                     <IconMapPin size={16} />
                   </div>
                 )}
 
-                <div style={{ marginLeft: 6 }}>
-                  <Text size="sm" style={{ fontWeight: 600, color: '#d0ffd0' }}>
+                <div style={{ 
+                  marginLeft: 14, // Increased margin for better spacing from the color bar
+                  padding: '2px 0' // Added padding for better visual appearance
+                }}>
+                  <Text 
+                    size="sm" 
+                    style={{ 
+                      fontWeight: isHighlighted ? 700 : 600, 
+                      color: isHighlighted ? '#ffffff' : '#d0ffd0' 
+                    }}
+                  >
                     {rule.species ? rule.species.join(', ') : 'Various species'}
                   </Text>
-                  <Text size="sm"><strong>Area:</strong> {rule.area || 'Special area'}</Text>
+                  <Text 
+                    size="sm" 
+                    style={{ 
+                      fontWeight: isHighlighted ? 600 : 'normal' 
+                    }}
+                  >
+                    <strong>Area:</strong> {rule.area || 'Special area'}
+                  </Text>
                   <Text size="sm"><strong>Season:</strong> {rule.season || 'Check regulations'}</Text>
                   <Text size="sm"><strong>Bag Limit:</strong> {rule.bagLimit || 'Check regulations'}</Text>
                   <Text size="sm"><strong>Notes:</strong> {rule.notes || 'No additional notes'}</Text>
@@ -397,6 +477,17 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
           })}
         </div>
       )}
+
+      {/* Add a style tag for the pulsing animation */}
+      <style>
+        {`
+          @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+          }
+        `}
+      </style>
     </div>
   );
 };
