@@ -101,7 +101,7 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
       });
     }
     
-    return matchingRule;
+    return matchingRule || null;
   };
 
   // Handle rule selection with map navigation
