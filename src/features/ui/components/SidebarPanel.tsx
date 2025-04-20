@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Text, Divider, Switch } from '@mantine/core';
+import { Text, Divider, Switch, Modal, Button } from '@mantine/core';
 import { IconChevronLeft, IconChevronRight, IconFish, IconDeer } from '@tabler/icons-react';
 import { useZoneState } from '../../zones/hooks/useZoneState';
 
@@ -22,11 +22,25 @@ const SidebarPanel = ({
 }: SidebarPanelProps) => {
   const [sidebarVisible, setSidebarVisible] = useState(true);
   const { selectedZone, setSelectedZone } = useZoneState();
+  
+  // State for coming soon modal
+  const [comingSoonModalOpen, setComingSoonModalOpen] = useState(false);
 
   const fishingZones = ['RFA 1', 'RFA 2', 'RFA 3', 'RFA 4', 'RFA 5', 'RFA 6'];
   const fishingSpecies = ['Brook Trout', 'Smallmouth Bass', 'Rainbow Trout', 'Brown Trout', 'Chain Pickerel', 'White Perch', 'Yellow Perch'];
   const huntingZones = ['Zone A', 'Zone B', 'Zone C'];
   const huntingSpecies = ['White-tailed Deer', 'Ducks'];
+
+  // Modified toggle handler
+  const handleModeToggle = () => {
+    if (mode === 'fishing') {
+      // Show coming soon modal instead of changing modes
+      setComingSoonModalOpen(true);
+    } else {
+      // Allow switching back to fishing
+      setMode('fishing');
+    }
+  };
 
   // Handler for species checkbox changes
   const handleSpeciesChange = (species: string, checked: boolean) => {
@@ -47,7 +61,7 @@ const SidebarPanel = ({
 
   return (
     <>
-      {/* Toggle button - Positioned correctly */}
+      {/* Toggle button */}
       <div style={{ 
         position: 'absolute', 
         top: 110, 
@@ -98,7 +112,7 @@ const SidebarPanel = ({
           <Text size="sm" style={{ fontWeight: 600 }}>Hunting or Fishing:</Text>
           <div 
             className="slider" 
-            onClick={() => setMode(mode === 'fishing' ? 'hunting' : 'fishing')} 
+            onClick={handleModeToggle} 
             style={{ 
               width: 120, 
               height: 40, 
@@ -181,6 +195,66 @@ const SidebarPanel = ({
           ))}
         </div>
       </div>
+
+      {/* Simple Coming Soon Modal */}
+      <Modal
+        opened={comingSoonModalOpen}
+        onClose={() => setComingSoonModalOpen(false)}
+        title=""
+        centered
+        size="sm"
+        padding="xl"
+        styles={{
+          overlay: {
+            backdropFilter: 'blur(5px)',
+            backgroundColor: 'rgba(18, 22, 18, 0.75)'
+          },
+          content: {
+            backgroundColor: 'rgba(29, 35, 29, 0.95)',
+            color: '#e0ffe0',
+            borderRadius: 12,
+            border: '1px solid #4a7a4a',
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)'
+          },
+          header: {
+            display: 'none'
+          },
+          close: {
+            color: '#a0ffa0',
+            '&:hover': {
+              backgroundColor: 'rgba(160, 255, 160, 0.1)'
+            }
+          }
+        }}
+      >
+        <div style={{ textAlign: 'center', padding: '10px 0' }}>
+          <IconDeer size={56} style={{ color: '#70d670', margin: '0 auto 20px' }} />
+          
+          <Text style={{ fontSize: 22, fontWeight: 700, marginBottom: 12, color: '#a0ffa0' }}>
+            Hunting Mode Coming Soon
+          </Text>
+          
+          <Text style={{ fontSize: 15, lineHeight: 1.5, marginBottom: 24, opacity: 0.9 }}>
+            We're working on bringing you hunting regulations and features. Check back soon!
+          </Text>
+          
+          <Button 
+            onClick={() => setComingSoonModalOpen(false)}
+            styles={{
+              root: {
+                backgroundColor: '#70d670',
+                color: '#121612',
+                padding: '6px 24px',
+                '&:hover': {
+                  backgroundColor: '#5bc45b'
+                }
+              }
+            }}
+          >
+            Got it
+          </Button>
+        </div>
+      </Modal>
     </>
   );
 };
