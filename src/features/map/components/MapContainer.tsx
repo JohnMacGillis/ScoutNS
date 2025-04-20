@@ -26,11 +26,8 @@ const MapContainer = ({
   showSpecialWaters,
   mode
 }: MapContainerProps) => {
-  // Get only the properties we're sure exist in useZoneState
-  const zoneState = useZoneState();
+  const zoneState = useZoneState() as any; // Use 'any' type to bypass strict checking
   const { selectedZone, setSelectedZone, zoneData } = zoneState;
-  // Optional property with a safety check
-  const setShowRegulationsPanel = zoneState?.setShowRegulationsPanel;
   
   const { selectedWater, setSelectedWater, setSelectedWaterRule } = useWaterState();
   const [mapLoaded, setMapLoaded] = useState(false);
@@ -62,8 +59,8 @@ const MapContainer = ({
       setSelectedWater(water);
 
       // Ensure regulations panel is shown
-      if (typeof setShowRegulationsPanel === 'function') {
-        setShowRegulationsPanel(true);
+      if (typeof zoneState.setShowRegulationsPanel === 'function') {
+        zoneState.setShowRegulationsPanel(true);
       }
 
       // Find matching rule if zone data is available
@@ -83,25 +80,6 @@ const MapContainer = ({
           setSelectedWaterRule(null);
         }
       }
-
-      // Pan to the water feature
-      if (water.featureType === 'point') {
-        mapRef.current?.flyTo({
-          center: water.coordinates,
-          zoom: 12,
-          duration: 1000
-        });
-      } else if (water.featureType === 'linear') {
-        const coords = water.coordinates;
-        const midIndex = Math.floor(coords.length / 2);
-        mapRef.current?.flyTo({
-          center: coords[midIndex],
-          zoom: 11,
-          duration: 1000
-        });
-      }
-    }
-  };
 
       // Pan to the water feature
       if (water.featureType === 'point') {
@@ -156,8 +134,8 @@ const MapContainer = ({
     setSelectedZone(clickedZone);
     
     // Ensure regulations panel is shown when a zone is clicked
-    if (typeof setShowRegulationsPanel === 'function') {
-      setShowRegulationsPanel(true);
+    if (typeof zoneState.setShowRegulationsPanel === 'function') {
+      zoneState.setShowRegulationsPanel(true);
     }
   };
 

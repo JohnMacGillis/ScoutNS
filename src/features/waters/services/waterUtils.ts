@@ -1,23 +1,6 @@
 import { SpecialWater, FishingRule } from '../../../shared/types';
 
 /**
- * Extend the SpecialWater interface to include optional properties we're using
- */
-interface EnhancedSpecialWater extends SpecialWater {
-  // Optional additional properties
-  ruleId?: string | number;
-  location?: string;
-}
-
-/**
- * Extend the FishingRule interface to include optional properties we're using
- */
-interface EnhancedFishingRule extends FishingRule {
-  // Optional additional properties
-  id?: string | number;
-}
-
-/**
  * Find matching rule index for a special water in the regulations list
  * @param water - The special water to match
  * @param rules - List of fishing rules to search through
@@ -29,17 +12,13 @@ export const findMatchingRuleIndex = (water: SpecialWater, rules: FishingRule[])
     return null;
   }
 
-  // Cast to enhanced types for internal use
-  const enhancedWater = water as EnhancedSpecialWater;
-  const enhancedRules = rules as EnhancedFishingRule[];
-
   console.log("[waterUtils] Finding rule for water:", water.name);
   
   // Enhanced matching strategies in priority order
   
   // 1. Try to match by direct ID if present
-  if (enhancedWater.ruleId !== undefined) {
-    const idMatch = enhancedRules.findIndex(rule => rule.id === enhancedWater.ruleId);
+  if ((water as any).ruleId !== undefined) {
+    const idMatch = rules.findIndex(rule => (rule as any).id === (water as any).ruleId);
     if (idMatch !== -1) {
       console.log("[waterUtils] Found match by ID at index:", idMatch);
       return idMatch;
@@ -119,11 +98,11 @@ export const findMatchingRuleIndex = (water: SpecialWater, rules: FishingRule[])
   }
 
   // 6. Try matching by location property if available
-  if (enhancedWater.location) {
+  if ((water as any).location) {
     const locationIndex = rules.findIndex(rule => 
       rule.area && 
-      enhancedWater.location && 
-      normalizeText(rule.area).includes(normalizeText(enhancedWater.location))
+      (water as any).location && 
+      normalizeText(rule.area).includes(normalizeText((water as any).location))
     );
 
     if (locationIndex !== -1) {
@@ -161,9 +140,6 @@ export const findMatchingSpecialWater = (rule: FishingRule, specialWaters?: Spec
     return null;
   }
 
-  // Cast to enhanced type for internal use
-  const enhancedRule = rule as EnhancedFishingRule;
-
   console.log("[waterUtils] Finding special water for rule:", rule.area);
   
   // Handle different types of special waters data
@@ -194,13 +170,10 @@ export const findMatchingSpecialWater = (rule: FishingRule, specialWaters?: Spec
     return null;
   }
   
-  // Cast to enhanced type for internal use
-  const enhancedWaters = watersList as EnhancedSpecialWater[];
-  
   // 1. Try to match by direct rule ID if present
   try {
-    if (enhancedRule.id !== undefined) {
-      const idMatch = enhancedWaters.find(water => water && (water as EnhancedSpecialWater).ruleId === enhancedRule.id);
+    if ((rule as any).id !== undefined) {
+      const idMatch = watersList.find(water => water && (water as any).ruleId === (rule as any).id);
       if (idMatch) {
         console.log("[waterUtils] Found match by rule ID:", idMatch.name);
         return idMatch;
@@ -296,9 +269,9 @@ export const findMatchingSpecialWater = (rule: FishingRule, specialWaters?: Spec
 
   // 6. Try matching by location with error handling
   try {
-    const locationMatch = enhancedWaters.find(water => 
-      water && (water as EnhancedSpecialWater).location && rule.area && 
-      normalizeText((water as EnhancedSpecialWater).location as string) === normalizeText(rule.area)
+    const locationMatch = watersList.find(water => 
+      water && (water as any).location && rule.area && 
+      normalizeText((water as any).location) === normalizeText(rule.area)
     );
 
     if (locationMatch) {
@@ -386,49 +359,6 @@ function areTextsSimilarByTokens(text1: string, text2: string): boolean {
     .filter(token => token.length > 2 && !stopWords.includes(token));
   
   const tokens2 = normalizeText(text2)
-    .split(' ')
-    .filter(token => token.length > 2 && !stopWords.includes(token));
-  
-  // Count matching tokens
-  let matchCount = 0;
-  for (const token1 of tokens1) {
-    if (tokens2.some(token2 => token2.includes(token1) || token1.includes(token2))) {
-      matchCount++;
-    }
-  }
-  
-  // Match if we have at least 2 matching tokens or 50% of the smaller token set
-  const threshold = Math.max(2, Math.min(tokens1.length, tokens2.length) * 0.5);
-  return matchCount >= threshold;
-}
-
-/**
- * Extract individual lake names from a notes section
- * This handles cases like "Includes Birch Hill Lake, Blueberry Lake, etc."
- */
-function extractLakeNamesFromNotes(notes: string): string[] {
-  if (!notes) return [];
-  
-  // First, check if there's an "Includes" section listing lakes
-  const includesMatch = notes.match(/includes\s+(.*?)(?:\.|\sand)/i);
-  if (includesMatch && includesMatch[1]) {
-    // Split by commas and clean up each name
-    return includesMatch[1]
-      .split(/,|and/)
-      .map(name => name.trim())
-      .filter(name => name.length > 0);
-  }
-  
-  // If no "Includes" pattern, look for lake/river patterns
-  const lakePattern = /([A-Za-z\s]+(?:Lake|River|Brook))/gi;
-  const matches = [...notes.matchAll(lakePattern)];
-  
-  if (matches.length > 0) {
-    return matches.map(match => match[1].trim());
-  }
-  
-  return [];
-}2)
     .split(' ')
     .filter(token => token.length > 2 && !stopWords.includes(token));
   
