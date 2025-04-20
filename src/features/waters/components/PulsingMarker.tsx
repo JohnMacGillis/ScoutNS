@@ -6,6 +6,7 @@ interface PulsingMarkerProps {
   water: PointSpecialWater;
   onClick?: () => void;
   selected?: boolean;
+  size?: number; // Scale factor for marker size
 }
 
 // Color mapping for different regulation types
@@ -21,7 +22,8 @@ const regulationColors: Record<string, string> = {
 const PulsingMarker: React.FC<PulsingMarkerProps> = ({ 
   water, 
   onClick, 
-  selected = false 
+  selected = false,
+  size = 1 // Default scale factor
 }) => {
   const markerRef = useRef<HTMLDivElement>(null);
   
@@ -32,6 +34,10 @@ const PulsingMarker: React.FC<PulsingMarkerProps> = ({
   };
   
   const markerColor = getMarkerColor(water.regulationType);
+  
+  // Base size values - will be multiplied by size factor
+  const baseSize = selected ? 18 : 12;
+  const actualSize = Math.round(baseSize * size);
   
   // Apply pulsing animation when marker is selected
   useEffect(() => {
@@ -54,8 +60,8 @@ const PulsingMarker: React.FC<PulsingMarkerProps> = ({
       <div 
         ref={markerRef}
         style={{
-          width: selected ? 18 : 12,
-          height: selected ? 18 : 12,
+          width: actualSize,
+          height: actualSize,
           borderRadius: '50%',
           backgroundColor: markerColor,
           border: `2px solid ${selected ? 'white' : 'rgba(255,255,255,0.7)'}`,

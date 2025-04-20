@@ -23,3 +23,52 @@ html, body, #root {
 .read-the-docs {
   all: unset;
 }
+
+/* === Mobile-specific styles === */
+@media (max-width: 767px) {
+  /* Make clickable areas larger on mobile */
+  button, 
+  input[type="checkbox"],
+  select,
+  .clickable {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Increase font size for readability */
+  body {
+    font-size: 16px;
+  }
+  
+  /* Add some touch-friendly spacing */
+  label {
+    margin-bottom: 8px;
+  }
+
+  /* Bottom padding for mobile nav */
+  .app-container {
+    padding-bottom: 60px;
+  }
+  
+  /* Ensure maps take up full space on mobile */
+  .mapboxgl-map {
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  /* Position map controls better for mobile */
+  .mapboxgl-ctrl-bottom-right {
+    bottom: 70px !important; /* Above the nav bar */
+  }
+}
+
+/* Animation for pulsing markers */
+@keyframes pulse {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.pulsing {
+  animation: pulse 1.5s infinite;
+}

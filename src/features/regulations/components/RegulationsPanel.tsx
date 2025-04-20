@@ -1,9 +1,10 @@
 import { useRef, useEffect } from 'react';
 import { Text, Divider } from '@mantine/core';
-import { IconMapPin } from '@tabler/icons-react';
+import { IconMapPin, IconArrowLeft } from '@tabler/icons-react';
 import { useZoneState } from '../../zones/hooks/useZoneState';
 import { useWaterState } from '../../waters/hooks/useWaterState';
 import { FishingRule, SpecialWater } from '../../../shared/types';
+import { useResponsive } from '../../../shared/hooks/useResponsive';
 
 // Import color utilities
 import { regulationColors, regulationNames } from '../../../shared/utils/colorUtils';
@@ -28,6 +29,7 @@ const RegulationsPanel = ({
   getRegulationColor,
   selectedSpecies // Use the selected species for filtering
 }: RegulationsPanelProps) => {
+  const { isMobile } = useResponsive();
   const zoneState = useZoneState() as any;
   const { selectedZone, zoneData, isLoading, setSelectedZone } = zoneState;
   const setShowRegulationsPanel = zoneState.setShowRegulationsPanel || (() => {});
@@ -245,20 +247,22 @@ const RegulationsPanel = ({
     return null;
   }
 
-  // Common panel styles
+  // Common panel styles - adapted for mobile
   const panelStyles = {
     position: 'absolute' as const,
-    top: 120,
+    top: isMobile ? 0 : 120,
     right: 0,
-    width: 360,
-    bottom: 20,
+    width: isMobile ? '100%' : 360,
+    height: isMobile ? '100%' : 'calc(100% - 140px)',
+    bottom: isMobile ? 0 : 20,
     overflowY: 'auto' as const,
-    backgroundColor: 'rgba(18,22,18,0.85)',
+    backgroundColor: isMobile ? 'rgba(18,22,18,0.95)' : 'rgba(18,22,18,0.85)',
     color: '#e0ffe0',
     padding: 20,
-    borderTopLeftRadius: 12,
-    borderBottomLeftRadius: 12,
-    boxShadow: '-4px 0 12px rgba(0,0,0,0.4)',
+    paddingTop: isMobile ? 70 : 20, // Extra space for header on mobile
+    borderTopLeftRadius: isMobile ? 0 : 12,
+    borderBottomLeftRadius: isMobile ? 0 : 12,
+    boxShadow: isMobile ? 'none' : '-4px 0 12px rgba(0,0,0,0.4)',
     zIndex: 1100,
     backdropFilter: 'blur(10px)',
     scrollBehavior: 'smooth' as const
@@ -267,10 +271,10 @@ const RegulationsPanel = ({
   // Common close button styles
   const closeButtonStyles = {
     position: 'absolute' as const,
-    top: 10,
-    right: 10,
-    width: 24,
-    height: 24,
+    top: isMobile ? 15 : 10,
+    right: isMobile ? 15 : 10,
+    width: isMobile ? 36 : 24,
+    height: isMobile ? 36 : 24,
     borderRadius: '50%',
     backgroundColor: 'rgba(75, 95, 75, 0.6)',
     display: 'flex' as const,
@@ -306,10 +310,13 @@ const RegulationsPanel = ({
           onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'rgba(100, 130, 100, 0.8)'}
           onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(75, 95, 75, 0.6)'}
         >
-          <span style={{ color: '#e0ffe0', fontSize: 18, fontWeight: 700, lineHeight: 1 }}>×</span>
+          {isMobile ? 
+            <IconArrowLeft size={20} color="#e0ffe0" /> : 
+            <span style={{ color: '#e0ffe0', fontSize: 18, fontWeight: 700, lineHeight: 1 }}>×</span>
+          }
         </div>
 
-        <Text style={{ fontSize: 18, fontWeight: 700, marginBottom: 8 }}>{selectedZone}</Text>
+        <Text style={{ fontSize: isMobile ? 20 : 18, fontWeight: 700, marginBottom: 8 }}>{selectedZone}</Text>
         <Text size="sm" style={{ marginBottom: 12 }}>Loading zone regulations...</Text>
       </div>
     );
@@ -348,13 +355,16 @@ const RegulationsPanel = ({
         onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'rgba(100, 130, 100, 0.8)'}
         onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(75, 95, 75, 0.6)'}
       >
-        <span style={{ color: '#e0ffe0', fontSize: 18, fontWeight: 700, lineHeight: 1 }}>×</span>
+        {isMobile ? 
+          <IconArrowLeft size={20} color="#e0ffe0" /> : 
+          <span style={{ color: '#e0ffe0', fontSize: 18, fontWeight: 700, lineHeight: 1 }}>×</span>
+        }
       </div>
 
-      <Text style={{ fontSize: 18, fontWeight: 700, marginBottom: 8 }}>{zoneData.zone}</Text>
+      <Text style={{ fontSize: isMobile ? 20 : 18, fontWeight: 700, marginBottom: 8 }}>{zoneData.zone}</Text>
 
       {zoneData.notes && (
-        <Text size="sm" style={{ marginBottom: 12 }}>
+        <Text size={isMobile ? "md" : "sm"} style={{ marginBottom: 12 }}>
           <strong>Note:</strong> {zoneData.notes}
         </Text>
       )}
@@ -367,10 +377,10 @@ const RegulationsPanel = ({
           padding: 12,
           marginBottom: 16
         }}>
-          <Text size="sm" style={{ fontWeight: 600 }}>
+          <Text size={isMobile ? "md" : "sm"} style={{ fontWeight: 600 }}>
             Showing rules for: {selectedSpecies.join(', ')}
           </Text>
-          <Text size="xs" style={{ marginTop: 4, opacity: 0.9 }}>
+          <Text size={isMobile ? "sm" : "xs"} style={{ marginTop: 4, opacity: 0.9 }}>
             Rules that apply to all species are always shown.
           </Text>
         </div>
@@ -385,7 +395,7 @@ const RegulationsPanel = ({
           marginBottom: 16,
           marginTop: 16
         }}>
-          <Text size="sm" style={{ fontWeight: 600, color: '#ffcccc' }}>
+          <Text size={isMobile ? "md" : "sm"} style={{ fontWeight: 600, color: '#ffcccc' }}>
             No rules found for the selected species. Try selecting different species or clear your selection to see all rules.
           </Text>
         </div>
@@ -399,7 +409,7 @@ const RegulationsPanel = ({
           padding: 12,
           marginBottom: 16
         }}>
-          <Text size="sm" style={{ fontWeight: 700, marginBottom: 8 }}>
+          <Text size={isMobile ? "md" : "sm"} style={{ fontWeight: 700, marginBottom: 8 }}>
             Special Waters Legend
           </Text>
 
@@ -423,7 +433,7 @@ const RegulationsPanel = ({
                     marginRight: 6
                   }}
                 />
-                <Text size="xs">
+                <Text size={isMobile ? "sm" : "xs"}>
                   {regulationNames[type as keyof typeof regulationNames]}
                 </Text>
               </div>
@@ -445,17 +455,17 @@ const RegulationsPanel = ({
           alignItems: 'flex-start',
           gap: 10
         }}>
-          <IconMapPin size={18} style={{ flexShrink: 0, marginTop: 2 }} />
+          <IconMapPin size={isMobile ? 22 : 18} style={{ flexShrink: 0, marginTop: 2 }} />
           <div>
-            <Text size="sm" style={{ fontWeight: 700 }}>
+            <Text size={isMobile ? "md" : "sm"} style={{ fontWeight: 700 }}>
               {selectedWater.name}
             </Text>
-            <Text size="xs">
+            <Text size={isMobile ? "sm" : "xs"}>
               {selectedWater.regulationType ?
                 (regulationNames[selectedWater.regulationType as keyof typeof regulationNames] || selectedWater.regulationType) :
                 'Special Water'}
             </Text>
-            <Text size="xs" style={{ marginTop: 4 }}>
+            <Text size={isMobile ? "sm" : "xs"} style={{ marginTop: 4 }}>
               See highlighted special waters section below for regulations
             </Text>
           </div>
@@ -465,7 +475,7 @@ const RegulationsPanel = ({
       {/* General Rules */}
       {filteredGeneralRules.length > 0 && (
         <div style={{ marginBottom: 20 }}>
-          <Text size="sm" style={{ fontWeight: 700, marginBottom: 8, borderBottom: '1px solid #444' }}>
+          <Text size={isMobile ? "md" : "sm"} style={{ fontWeight: 700, marginBottom: 8, borderBottom: '1px solid #444' }}>
             General Rules
           </Text>
           {filteredGeneralRules.map((rule: FishingRule, idx: number) => (
@@ -475,19 +485,19 @@ const RegulationsPanel = ({
                 backgroundColor: 'rgba(255, 255, 255, 0.03)',
                 border: '1px solid #2e3c2e',
                 borderRadius: 8,
-                padding: 10,
+                padding: isMobile ? 14 : 10,
                 marginTop: 12
               }}
             >
-              <Text size="xs" style={{ fontWeight: 600, color: '#c1ffc1' }}>
+              <Text size={isMobile ? "sm" : "xs"} style={{ fontWeight: 600, color: '#c1ffc1' }}>
                 {rule.species ? rule.species.join(', ') : 'Various species'}
               </Text>
               {rule.area && (
-                <Text size="xs"><strong>Area:</strong> {rule.area}</Text>
+                <Text size={isMobile ? "sm" : "xs"}><strong>Area:</strong> {rule.area}</Text>
               )}
-              <Text size="xs"><strong>Season:</strong> {rule.season || 'Check regulations'}</Text>
-              <Text size="xs"><strong>Bag Limit:</strong> {rule.bagLimit || 'Check regulations'}</Text>
-              <Text size="xs"><strong>Notes:</strong> {rule.notes || 'No additional notes'}</Text>
+              <Text size={isMobile ? "sm" : "xs"}><strong>Season:</strong> {rule.season || 'Check regulations'}</Text>
+              <Text size={isMobile ? "sm" : "xs"}><strong>Bag Limit:</strong> {rule.bagLimit || 'Check regulations'}</Text>
+              <Text size={isMobile ? "sm" : "xs"}><strong>Notes:</strong> {rule.notes || 'No additional notes'}</Text>
             </div>
           ))}
         </div>
@@ -500,10 +510,11 @@ const RegulationsPanel = ({
           backgroundColor: 'rgba(46, 65, 46, 0.3)',
           borderRadius: 10,
           padding: 16,
-          boxShadow: '0 3px 8px rgba(0, 0, 0, 0.2)'
+          boxShadow: '0 3px 8px rgba(0, 0, 0, 0.2)',
+          marginBottom: isMobile ? 60 : 0 // Add bottom margin on mobile for navigation
         }}>
           <Divider
-            label={<Text size="sm" style={{ fontWeight: 700, color: '#a0ffa0' }}>SPECIAL WATERS</Text>}
+            label={<Text size={isMobile ? "md" : "sm"} style={{ fontWeight: 700, color: '#a0ffa0' }}>SPECIAL WATERS</Text>}
             labelPosition="center"
             my="sm"
             styles={{
@@ -545,7 +556,7 @@ const RegulationsPanel = ({
                       ? `1px solid ${ruleColor}` 
                       : '1px solid #3e5c3e',
                   borderRadius: 8,
-                  padding: 10,
+                  padding: isMobile ? 14 : 10,
                   marginBottom: 12,
                   cursor: hasMarker ? 'pointer' : 'default',
                   transition: 'all 0.2s ease',
@@ -553,6 +564,7 @@ const RegulationsPanel = ({
                   boxShadow: isHighlighted 
                     ? `0 0 10px ${ruleColor}44` 
                     : 'none',
+                  minHeight: isMobile ? 120 : 'auto'
                 }}
               >
                 {/* Regulation type indicator */}
@@ -577,7 +589,7 @@ const RegulationsPanel = ({
                     color: ruleColor,
                     animation: isHighlighted ? 'pulse 1.5s infinite' : 'none'
                   }}>
-                    <IconMapPin size={16} />
+                    <IconMapPin size={isMobile ? 20 : 16} />
                   </div>
                 )}
 
@@ -586,7 +598,7 @@ const RegulationsPanel = ({
                   padding: '2px 0'
                 }}>
                   <Text 
-                    size="sm" 
+                    size={isMobile ? "md" : "sm"}
                     style={{ 
                       fontWeight: isHighlighted ? 700 : 600, 
                       color: isHighlighted ? '#ffffff' : '#d0ffd0' 
@@ -595,16 +607,16 @@ const RegulationsPanel = ({
                     {rule.species ? rule.species.join(', ') : 'Various species'}
                   </Text>
                   <Text 
-                    size="sm" 
+                    size={isMobile ? "md" : "sm"}
                     style={{ 
                       fontWeight: isHighlighted ? 600 : 'normal' 
                     }}
                   >
                     <strong>Area:</strong> {rule.area || 'Special area'}
                   </Text>
-                  <Text size="sm"><strong>Season:</strong> {rule.season || 'Check regulations'}</Text>
-                  <Text size="sm"><strong>Bag Limit:</strong> {rule.bagLimit || 'Check regulations'}</Text>
-                  <Text size="sm"><strong>Notes:</strong> {rule.notes || 'No additional notes'}</Text>
+                  <Text size={isMobile ? "md" : "sm"}><strong>Season:</strong> {rule.season || 'Check regulations'}</Text>
+                  <Text size={isMobile ? "md" : "sm"}><strong>Bag Limit:</strong> {rule.bagLimit || 'Check regulations'}</Text>
+                  <Text size={isMobile ? "md" : "sm"}><strong>Notes:</strong> {rule.notes || 'No additional notes'}</Text>
 
                   {/* Always display regulation type badge */}
                   <div style={{ 
@@ -614,7 +626,7 @@ const RegulationsPanel = ({
                     color: isHighlighted ? '#ffffff' : '#d0ffd0',
                     borderRadius: 4,
                     padding: '2px 6px',
-                    fontSize: 11,
+                    fontSize: isMobile ? 12 : 11,
                     marginTop: 6
                   }}>
                     {regulationName}

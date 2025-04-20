@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { ZoneInfo } from '../../../shared/types';
-import { zoneRuleMap } from '../../../data/zoneRuleMap'; // ✅ This is correct
+import { zoneRuleMap } from '../../../data/zoneRuleMap';
+import { useResponsive } from '../../../shared/hooks/useResponsive';
 
 interface ZoneStateContextProps {
   selectedZone: string;
@@ -8,15 +9,26 @@ interface ZoneStateContextProps {
   isLoading: boolean;
   error: Error | null;
   setSelectedZone: (zone: string) => void;
+  showRegulationsPanel: boolean;
+  setShowRegulationsPanel: (show: boolean) => void;
 }
 
 const ZoneStateContext = createContext<ZoneStateContextProps | undefined>(undefined);
 
 export const ZoneStateProvider = ({ children }: { children: ReactNode }) => {
+  const { isMobile } = useResponsive();
   const [selectedZone, setSelectedZone] = useState<string>('');
   const [zoneData, setZoneData] = useState<ZoneInfo | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
+  const [showRegulationsPanel, setShowRegulationsPanel] = useState<boolean>(!isMobile);
+
+  // On mobile, when a zone is selected, show the regulations panel
+  useEffect(() => {
+    if (isMobile && selectedZone) {
+      setShowRegulationsPanel(true);
+    }
+  }, [selectedZone, isMobile]);
 
   useEffect(() => {
     console.log('[ZoneState] useEffect triggered for selectedZone:', selectedZone);
@@ -72,6 +84,8 @@ export const ZoneStateProvider = ({ children }: { children: ReactNode }) => {
         isLoading,
         error,
         setSelectedZone,
+        showRegulationsPanel,
+        setShowRegulationsPanel,
       }}
     >
       {children}

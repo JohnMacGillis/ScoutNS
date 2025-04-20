@@ -7,6 +7,7 @@ import { SpecialWater, PointSpecialWater, LinearSpecialWater } from '../../../sh
 import PulsingMarker from '../../waters/components/PulsingMarker';
 import RiverSection from '../../waters/components/RiverSection';
 import { findMatchingRuleIndex } from '../../waters/services/waterUtils';
+import { useResponsive } from '../../../shared/hooks/useResponsive';
 
 // Declare window augmentation for TypeScript
 declare global {
@@ -26,8 +27,10 @@ const MapContainer = ({
   showSpecialWaters,
   mode
 }: MapContainerProps) => {
+  const { isMobile } = useResponsive();
   const zoneState = useZoneState() as any; // Use 'any' type to bypass strict checking
   const { selectedZone, setSelectedZone, zoneData } = zoneState;
+  const setShowRegulationsPanel = zoneState.setShowRegulationsPanel || (() => {});
   
   const { selectedWater, setSelectedWater, setSelectedWaterRule } = useWaterState();
   const [mapLoaded, setMapLoaded] = useState(false);
@@ -58,9 +61,11 @@ const MapContainer = ({
       // Select the new water
       setSelectedWater(water);
 
-      // Ensure regulations panel is shown
-      if (typeof zoneState.setShowRegulationsPanel === 'function') {
-        zoneState.setShowRegulationsPanel(true);
+      // Ensure regulations panel is shown on mobile
+      if (isMobile) {
+        if (typeof setShowRegulationsPanel === 'function') {
+          setShowRegulationsPanel(true);
+        }
       }
 
       // Find matching rule if zone data is available
@@ -85,7 +90,7 @@ const MapContainer = ({
       if (water.featureType === 'point') {
         mapRef.current?.flyTo({
           center: water.coordinates,
-          zoom: 12,
+          zoom: isMobile ? 11 : 12,
           duration: 1000
         });
       } else if (water.featureType === 'linear') {
@@ -93,7 +98,7 @@ const MapContainer = ({
         const midIndex = Math.floor(coords.length / 2);
         mapRef.current?.flyTo({
           center: coords[midIndex],
-          zoom: 11,
+          zoom: isMobile ? 10 : 11,
           duration: 1000
         });
       }
@@ -133,9 +138,16 @@ const MapContainer = ({
     console.log("Zone clicked:", clickedZone);
     setSelectedZone(clickedZone);
     
-    // Ensure regulations panel is shown when a zone is clicked
-    if (typeof zoneState.setShowRegulationsPanel === 'function') {
-      zoneState.setShowRegulationsPanel(true);
+    // On mobile, show regulations panel when a zone is selected
+    if (isMobile) {
+      if (typeof setShowRegulationsPanel === 'function') {
+        setShowRegulationsPanel(true);
+      }
+    } else {
+      // On desktop, ensure regulations panel is shown when a zone is clicked
+      if (typeof setShowRegulationsPanel === 'function') {
+        setShowRegulationsPanel(true);
+      }
     }
   };
 
@@ -152,10 +164,16 @@ const MapContainer = ({
     <Map
       id="main-map" // Added id for RiverSection to find the map
       ref={mapRef}
-      initialViewState={{ latitude: 45.081, longitude: -63.0, zoom: 7 }}
+      initialViewState={{ 
+        latitude: 45.081, 
+        longitude: -63.0, 
+        zoom: isMobile ? 6 : 7 // Slightly more zoomed out on mobile
+      }}
       mapStyle="mapbox://styles/mapbox/outdoors-v12"
       mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
       style={{ width: '100%', height: '100%' }}
+      dragRotate={!isMobile} // Disable rotation on mobile for simpler navigation
+      touchZoomRotate={true} // Enable pinch zoom
       onLoad={() => {
         console.log("Map loaded");
         setMapLoaded(true);
@@ -232,7 +250,7 @@ const MapContainer = ({
         }
       }}
     >
-      <NavigationControl position="top-right" />
+      <NavigationControl position={isMobile ? "bottom-right" : "top-right"} />
 
       {/* Render Zone Layers */}
       {zoneGeoData && (
@@ -275,6 +293,7 @@ const MapContainer = ({
                 water={water}
                 onClick={() => handleWaterClick(water)}
                 selected={selectedWater?.id === water.id}
+                size={isMobile ? 1.2 : 1} // Slightly larger on mobile
               />
             ))}
 
@@ -292,6 +311,7 @@ const MapContainer = ({
                 name={water.name}
                 onClick={() => handleWaterClick(water)}
                 selected={selectedWater?.id === water.id}
+                isMobile={isMobile}
               />
             ))}
         </>

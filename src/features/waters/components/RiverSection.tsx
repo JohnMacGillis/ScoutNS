@@ -19,6 +19,7 @@ interface RiverSectionProps {
   name: string;
   onClick: () => void;
   selected: boolean;
+  isMobile?: boolean;
 }
 
 const RiverSection: React.FC<RiverSectionProps> = ({ 
@@ -27,7 +28,8 @@ const RiverSection: React.FC<RiverSectionProps> = ({
   regulationType = 'default', 
   name, 
   onClick, 
-  selected 
+  selected,
+  isMobile = false
 }) => {
   // Get map instance
   const { current: map } = useMap();
@@ -144,6 +146,11 @@ const RiverSection: React.FC<RiverSectionProps> = ({
     }))
   };
 
+  // Adjust sizes for mobile
+  const lineWidth = selected ? (isMobile ? 6 : 5) : (isMobile ? 4 : 3);
+  const pointRadius = selected ? (isMobile ? 5 : 4) : (isMobile ? 4 : 3);
+  const textSize = isMobile ? 14 : 12;
+
   return (
     <>
       {/* Line Source - without onClick */}
@@ -157,7 +164,7 @@ const RiverSection: React.FC<RiverSectionProps> = ({
           type="line"
           paint={{
             'line-color': lineColor,
-            'line-width': selected ? 5 : 3,
+            'line-width': lineWidth,
             'line-opacity': selected ? 0.9 : 0.7
           }}
           layout={{
@@ -175,7 +182,7 @@ const RiverSection: React.FC<RiverSectionProps> = ({
             type="symbol"
             layout={{
               'text-field': name,
-              'text-size': 12,
+              'text-size': textSize,
               'text-anchor': 'center',
               'text-offset': [0, 0],
               'text-justify': 'center',
@@ -201,7 +208,7 @@ const RiverSection: React.FC<RiverSectionProps> = ({
           id={pointsLayerId}
           type="circle"
           paint={{
-            'circle-radius': selected ? 4 : 3,
+            'circle-radius': pointRadius,
             'circle-color': lineColor,
             'circle-opacity': 0.8,
             'circle-stroke-width': selected ? 2 : 1,
