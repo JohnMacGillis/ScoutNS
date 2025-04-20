@@ -5,78 +5,42 @@ import { useZoneState } from '../../zones/hooks/useZoneState';
 import { useWaterState } from '../../waters/hooks/useWaterState';
 import { FishingRule, SpecialWater } from '../../../shared/types';
 
-// Color mapping for different regulation types
-const regulationColors: Record<string, string> = {
-  'catch-release': '#ff9900',   // Orange
-  'fly-only': '#29a329',        // Green
-  'special-season': '#9966ff',  // Purple
-  'closed': '#ff3333',          // Red
-  'extended-season': '#3399ff', // Blue
-  'special-limit': '#ffcc00'    // Yellow
-};
+// Import color utilities
+import { regulationColors, regulationNames } from '../../../shared/utils/colorUtils';
 
-// Display names for regulation types
-const regulationNames: Record<string, string> = {
-  'catch-release': 'Catch & Release',
-  'fly-only': 'Fly Fishing Only',
-  'special-season': 'Special Season',
-  'closed': 'Closed to Angling',
-  'extended-season': 'Extended Season',
-  'special-limit': 'Special Limits'
-};
+// Directly import specialWatersData
+import specialWatersData from '../../../data/specialWatersData';
 
 interface RegulationsPanelProps {
   findMatchingSpecialWater: (rule: FishingRule) => SpecialWater | null;
   getRegulationColor: (type: string) => string;
 }
 
-const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: RegulationsPanelProps) => {
-  console.log("[RegPanel] Rendering RegulationsPanel component");
+// Interface for synthetic rule with optional synthetic flag
+interface SyntheticRule extends FishingRule {
+  synthetic?: boolean;
+  waterId?: string;
+}
 
-  // Use type assertion to bypass TypeScript errors
+const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: RegulationsPanelProps) => {
   const zoneState = useZoneState() as any;
   const { selectedZone, zoneData, isLoading, setSelectedZone } = zoneState;
-
-  // Access these properties from zoneState directly with fallbacks
-  const showRegulationsPanel = zoneState.showRegulationsPanel === undefined ? true : zoneState.showRegulationsPanel;
   const setShowRegulationsPanel = zoneState.setShowRegulationsPanel || (() => {});
 
   const { selectedWater, selectedWaterRule, setSelectedWater, setSelectedWaterRule } = useWaterState();
   const flyoutRef = useRef<HTMLDivElement | null>(null);
   const specialWatersRuleRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const allRulesRef = useRef<SyntheticRule[]>([]);
 
-  // Log current state on each render
-  console.log("[RegPanel] State:", {
-    selectedZone,
-    hasZoneData: !!zoneData,
-    zoneDataZone: zoneData?.zone || "none",
-    isLoading,
-    showRegulationsPanel,
-    hasSelectedWater: !!selectedWater,
-    hasSelectedWaterRule: !!selectedWaterRule
-  });
-
-  // Log when the component mounts/unmounts
+  // Auto-scroll to the matching rule when selectedWaterRule changes
   useEffect(() => {
-    console.log("[RegPanel] Component mounted");
-
-    return () => {
-      console.log("[RegPanel] Component unmounted");
-    };
-  }, []);
-
-  // NEW: Auto-scroll to the matching rule when selectedWaterRule changes
-  useEffect(() => {
-    if (selectedWaterRule && zoneData && zoneData.specialWaters) {
+    if (selectedWaterRule && allRulesRef.current.length > 0) {
       // Find the index of the matching rule
-      const ruleIndex = zoneData.specialWaters.findIndex(
-        (rule: FishingRule) => rule.area === selectedWaterRule.area
+      const ruleIndex = allRulesRef.current.findIndex(
+        rule => rule.area === selectedWaterRule.area
       );
 
       if (ruleIndex !== -1 && specialWatersRuleRefs.current[ruleIndex]) {
-        console.log("[RegPanel] Scrolling to rule index:", ruleIndex);
-        
-        // Scroll the rule into view with a small delay to ensure DOM is ready
         setTimeout(() => {
           specialWatersRuleRefs.current[ruleIndex]?.scrollIntoView({
             behavior: 'smooth',
@@ -85,25 +49,73 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
         }, 100);
       }
     }
-  }, [selectedWaterRule, zoneData]);
+  }, [selectedWaterRule, allRulesRef.current.length]);
+
+  // When selectedWater changes (map water clicked), find and highlight matching rule
+  useEffect(() => {
+    if (selectedWater && allRulesRef.current.length > 0 && !selectedWaterRule) {
+      // Try to find a matching rule for the selected water
+      const matchingRule = findRuleForWater(selectedWater);
+      
+      if (matchingRule) {
+        setSelectedWaterRule(matchingRule);
+      }
+    }
+  }, [selectedWater, allRulesRef.current.length, selectedWaterRule]);
+
+  // Function to find a rule that matches a selected water
+  const findRuleForWater = (water: SpecialWater): FishingRule | null => {
+    // Check all rules including synthetic ones
+    const allRules = allRulesRef.current;
+    
+    // First check exact matches
+    let matchingRule = allRules.find(rule => {
+      // Direct match by water ID
+      if ((rule as SyntheticRule).waterId === water.id) {
+        return true;
+      }
+      
+      // Exact name match
+      if (rule.area && (
+        rule.area === water.name ||
+        rule.area === water.area
+      )) {
+        return true;
+      }
+      
+      return false;
+    });
+    
+    // If not found, try partial matching
+    if (!matchingRule) {
+      matchingRule = allRules.find(rule => {
+        if (!rule.area || !water.name) return false;
+        
+        const ruleArea = rule.area.toLowerCase();
+        const waterName = water.name.toLowerCase();
+        const waterArea = water.area ? water.area.toLowerCase() : '';
+        
+        return ruleArea.includes(waterName) || 
+               waterName.includes(ruleArea) ||
+               (waterArea && (ruleArea.includes(waterArea) || waterArea.includes(ruleArea)));
+      });
+    }
+    
+    return matchingRule;
+  };
 
   // Handle rule selection with map navigation
   const handleRuleClick = (rule: FishingRule, _index: number) => {
-    console.log("[RegPanel] Rule clicked:", rule);
-
     try {
       // Find matching special water on the map
       const matchingWater = findMatchingSpecialWater(rule);
-      console.log("[RegPanel] Matching water found:", !!matchingWater);
 
       if (matchingWater) {
         // If it's the same rule, toggle off
         if (selectedWaterRule && rule.area === selectedWaterRule.area) {
-          console.log("[RegPanel] Deselecting current rule");
           setSelectedWaterRule(null);
           setSelectedWater(null);
         } else {
-          console.log("[RegPanel] Selecting new rule and navigating to water");
           setSelectedWaterRule(rule);
           setSelectedWater(matchingWater);
 
@@ -125,25 +137,83 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
                 duration: 1000
               });
             }
-          } else {
-            console.warn("[RegPanel] Map reference not available for navigation");
           }
         }
-      } else {
-        console.log("[RegPanel] No matching water found for rule:", rule.area);
       }
     } catch (error) {
       console.error("[RegPanel] Error in rule click handler:", error);
     }
   };
 
+  // Function to check if a rule has a corresponding water marker
+  const hasMapMarker = (rule: FishingRule): boolean => {
+    try {
+      return !!findMatchingSpecialWater(rule);
+    } catch (error) {
+      return false;
+    }
+  };
+
+  // Add synthetic rules for any extended season waters
+  // that exist in specialWatersData but don't have entries in zoneData.specialWaters
+  const getAllSpecialWaterRules = (): FishingRule[] => {
+    if (!zoneData || !zoneData.specialWaters) return [];
+    
+    // Start with the original special waters rules
+    const allRules = [...zoneData.specialWaters];
+    
+    // Check if we need to add any extended season waters
+    if (selectedZone && specialWatersData && specialWatersData[selectedZone]) {
+      // Find all extended season waters in the map data
+      const extendedSeasonWaters = specialWatersData[selectedZone]
+        .filter((water: any) => water.regulationType === 'extended-season');
+      
+      // Get all areas already in the rules (case-insensitive)
+      const existingAreas = new Set(
+        allRules
+          .filter(rule => rule.area)
+          .map(rule => rule.area.toLowerCase())
+      );
+      
+      // Find extended season waters that don't have corresponding rules
+      const missingWaters = extendedSeasonWaters.filter((water: any) => {
+        const waterName = water.name.toLowerCase();
+        const waterArea = water.area ? water.area.toLowerCase() : '';
+        
+        // Check if this water already has a rule
+        return !existingAreas.has(waterName) && 
+               !existingAreas.has(waterArea) &&
+               // Also check if the water name is part of any existing area
+               !Array.from(existingAreas).some(area => 
+                 area.includes(waterName) || waterName.includes(area)
+               );
+      });
+      
+      // Create synthetic rules for the missing waters
+      const syntheticRules: SyntheticRule[] = missingWaters.map((water: any) => ({
+        species: ['Brook Trout', 'Rainbow Trout'],
+        area: water.name,
+        season: 'Open all year',
+        bagLimit: '2 trout/day (Oct 1 - Mar 31)',
+        notes: 'Extended Season water. Regular bag limit applies Apr 1 - Sep 30.',
+        synthetic: true,
+        waterId: water.id
+      }));
+      
+      // Add the synthetic rules to the list
+      allRules.push(...syntheticRules);
+    }
+    
+    // Store all rules in the ref for access in effects
+    allRulesRef.current = allRules as SyntheticRule[];
+    
+    return allRules;
+  };
+
   // Debug: Check if panel should be rendered
   if (!selectedZone) {
-    console.log("[RegPanel] Not rendering - selectedZone is empty");
     return null;
   }
-
-  console.log("[RegPanel] Panel should be visible - continuing render");
 
   // Common panel styles
   const panelStyles = {
@@ -184,22 +254,19 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
 
   // If we're loading or don't have data yet, show a loading state
   if (isLoading || !zoneData) {
-    console.log("[RegPanel] Rendering loading state");
     return (
       <div
         ref={(el) => {
           flyoutRef.current = el;
-          console.log("[RegPanel] Flyout ref set:", !!el);
         }}
         className="flyout-panel"
         style={{
           ...panelStyles,
-          border: '2px solid #4a7a4a' // Make loading state more visible for debugging
+          border: '2px solid #4a7a4a'
         }}
       >
         <div
           onClick={() => {
-            console.log("[RegPanel] Close button clicked (loading state)");
             setSelectedZone('');
             if (typeof setShowRegulationsPanel === 'function') {
               setShowRegulationsPanel(false);
@@ -217,13 +284,14 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
       </div>
     );
   }
-
-  console.log("[RegPanel] Rendering full panel");
+  
+  // Get all special water rules including synthetic ones
+  const allSpecialWaterRules = getAllSpecialWaterRules();
+  
   return (
     <div
       ref={(el) => {
         flyoutRef.current = el;
-        console.log("[RegPanel] Flyout ref set:", !!el);
       }}
       className="flyout-panel"
       style={panelStyles}
@@ -231,7 +299,6 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
       {/* Close Button */}
       <div
         onClick={() => {
-          console.log("[RegPanel] Close button clicked");
           setSelectedZone('');
           if (typeof setShowRegulationsPanel === 'function') {
             setShowRegulationsPanel(false);
@@ -353,7 +420,7 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
       )}
 
       {/* Special Waters Section */}
-      {zoneData.specialWaters && zoneData.specialWaters.length > 0 && (
+      {allSpecialWaterRules.length > 0 && (
         <div style={{
           marginTop: 30,
           backgroundColor: 'rgba(46, 65, 46, 0.3)',
@@ -370,29 +437,24 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
               root: { borderTop: '2px solid #4d734d' }
             }}
           />
-                      {zoneData.specialWaters.map((rule: FishingRule, idx: number) => {
-            if (!rule) return null;
+          {allSpecialWaterRules.map((rule: FishingRule, idx: number) => {
+            if (!rule || !rule.area) return null;
 
-            // Check if there's a matching special water marker for this rule
-            let matchingWater = null;
-            let hasMarker = false;
-            let regulationType = 'special-season';
+            // Get the regulation type based on matching water
+            const regulationType = (rule as SyntheticRule).synthetic ? 'extended-season' : 
+              (findMatchingSpecialWater(rule)?.regulationType || 'special-season');
             
-            try {
-              matchingWater = findMatchingSpecialWater(rule);
-              hasMarker = matchingWater !== null;
-              // Get regulation type safely
-              regulationType = matchingWater?.regulationType || 'special-season';
-            } catch (error) {
-              console.error("[RegPanel] Error finding matching water for rule:", rule.area, error);
-            }
+            // Check if this rule has a marker on the map
+            const hasMarker = hasMapMarker(rule) || (rule as SyntheticRule).synthetic;
             
             const isHighlighted = selectedWaterRule?.area === rule.area;
-
-            // Get the color safely
+            
+            // Get the color for this regulation type
             const ruleColor = getRegulationColor(regulationType);
+            
+            // Determine regulation name for display
+            const regulationName = regulationNames[regulationType as keyof typeof regulationNames] || 'Special Regulation';
 
-            // IMPROVED: Enhanced styling for better visual prominence
             return (
               <div
                 key={`special-${idx}`}
@@ -414,7 +476,6 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
                   cursor: hasMarker ? 'pointer' : 'default',
                   transition: 'all 0.2s ease',
                   position: 'relative',
-                  // NEW: Box shadow for more emphasis when highlighted
                   boxShadow: isHighlighted 
                     ? `0 0 10px ${ruleColor}44` 
                     : 'none',
@@ -440,7 +501,6 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
                     top: 10,
                     right: 10,
                     color: ruleColor,
-                    // NEW: Add pulsing animation for selected rule
                     animation: isHighlighted ? 'pulse 1.5s infinite' : 'none'
                   }}>
                     <IconMapPin size={16} />
@@ -448,8 +508,8 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
                 )}
 
                 <div style={{ 
-                  marginLeft: 14, // Increased margin for better spacing from the color bar
-                  padding: '2px 0' // Added padding for better visual appearance
+                  marginLeft: 14,
+                  padding: '2px 0'
                 }}>
                   <Text 
                     size="sm" 
@@ -471,6 +531,20 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
                   <Text size="sm"><strong>Season:</strong> {rule.season || 'Check regulations'}</Text>
                   <Text size="sm"><strong>Bag Limit:</strong> {rule.bagLimit || 'Check regulations'}</Text>
                   <Text size="sm"><strong>Notes:</strong> {rule.notes || 'No additional notes'}</Text>
+
+                  {/* Always display regulation type badge */}
+                  <div style={{ 
+                    display: 'inline-block',
+                    backgroundColor: `${ruleColor}33`,
+                    border: `1px solid ${ruleColor}`,
+                    color: isHighlighted ? '#ffffff' : '#d0ffd0',
+                    borderRadius: 4,
+                    padding: '2px 6px',
+                    fontSize: 11,
+                    marginTop: 6
+                  }}>
+                    {regulationName}
+                  </div>
                 </div>
               </div>
             );
