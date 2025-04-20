@@ -48,7 +48,7 @@ const App = () => {
             <RegulationsPanel
               findMatchingSpecialWater={(rule: FishingRule) => {
                 // Return the matching special water or null, never undefined
-                const result = findMatchingSpecialWater(rule, specialWatersData, "");
+                const result = findMatchingSpecialWater(rule, specialWatersData);
                 return result || null;
               }}
               getRegulationColor={getRegulationColor}
