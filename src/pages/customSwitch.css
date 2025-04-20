@@ -1,0 +1,35 @@
+.custom-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-toggle .slider {
+  width: 64px;
+  height: 28px;
+  background-color: #2a322a;
+  border-radius: 14px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.custom-toggle .thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #70d670;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #121612;
+  transition: left 0.3s ease;
+}
+
+.custom-toggle .thumb.hunting {
+  left: 38px;
+}

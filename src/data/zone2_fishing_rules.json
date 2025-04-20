@@ -1,0 +1,381 @@
+{
+  "zone": "RFA 2",
+  "notes": "The following regulations do not apply to the lakes and tributaries of those rivers unless specified. All season dates are inclusive.",
+  "rules": [
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Inland Waters - General rule. From Sep 1 to Sep 30, no Brook Trout may be retained, and natural bait is prohibited in all waters for all Trout species, including Special Trout Management Areas, except waters with extended seasons for Trout.",
+      "area": "Inland Waters"
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Tidal Waters - General rule. From Sep 1 to Sep 30, no Brook Trout may be retained, and natural bait is prohibited in all waters for all Trout species, including Special Trout Management Areas, except waters with extended seasons for Trout.",
+      "area": "Tidal Waters"
+    },
+    {
+      "species": [
+        "Rainbow Trout",
+        "Brook Trout"
+      ],
+      "season": "Open all year",
+      "bagLimit": "2 trout/day (Oct 1 - Mar 31)",
+      "notes": "Extended Season waters. Regular bag limit applies Apr 1 - Sep 30.",
+      "area": "Cameron Lake, Copper Lake, Gillis Lake (Antigonish), Goose Harbour Lake, McKeen Lake, Pringle Lake (Guysborough), Dryden Lake, Gairloch Lake (Pictou)"
+    },
+    {
+      "species": [
+        "Brown Trout"
+      ],
+      "season": "Apr 15 - Aug 31",
+      "bagLimit": "5 trout/day",
+      "notes": "Night fishing permitted",
+      "area": "James River (Antigonish), from water supply dam downstream to confluence with West River"
+    },
+    {
+      "species": [
+        "Brown Trout"
+      ],
+      "season": "Apr 15 - Aug 31",
+      "bagLimit": "5 trout/day",
+      "notes": "Night fishing permitted",
+      "area": "River John (Pictou), from West Branch Bridge downstream to Welsford Bridge"
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Rainbow Trout"
+      ],
+      "season": "Open all year",
+      "bagLimit": "2 trout/day",
+      "notes": "Trophy Trout Stocking Program",
+      "area": "Stewart Lake (Antigonish)"
+    },
+    {
+      "species": [
+        "Smallmouth Bass"
+      ],
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "All must be retained",
+      "notes": "Open season coincides with the season for Trout.",
+      "area": null
+    },
+    {
+      "species": [
+        "Chain Pickerel"
+      ],
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "All must be retained",
+      "notes": "Open season coincides with the season for Trout.",
+      "area": null
+    },
+    {
+      "species": [
+        "White Perch",
+        "Yellow Perch"
+      ],
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "Standard limits apply",
+      "notes": "Standard regulations",
+      "area": "General Waters"
+    },
+    {
+      "species": [
+        "White Perch",
+        "Yellow Perch"
+      ],
+      "season": "Open all year",
+      "bagLimit": "Standard limits apply",
+      "notes": "Extended season",
+      "area": "Cameron Lake, Gillis Lake (Antigonish), Goose Harbour Lake, Goshen Lake, McKeen Lake, Pringle Lake (Guysborough), Gairloch Lake (Pictou)"
+    }
+  ],
+  "specialWaters": [
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Brierly Brook (Antigonish)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the bridge on the Schoolhouse Road. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Pomquet River (Antigonish)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the 104 Highway bridge. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Tracadie River (Antigonish)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "From the highway 4 bridge at Monastery to a point 400m downstream. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Country Harbour River (Guysborough)",
+      "season": "May 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the highway bridge on the Borneo Road, including Country Harbour Lake to a point 300m downstream of the Iron Bridge. Closed to all angling Apr 1 to May 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Ecum Secum River (Guysborough)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the outlet of Judd's Pool near New Chester. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Liscomb River (Guysborough)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the outlet of Big Stillwater Lake. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Liscomb River - Fish Ladder Area (Guysborough)",
+      "season": "Jun 1 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "From a point 70m upstream from the highway bridge at Liscomb Mills to a point 23m downstream from the entrance to the fish ladder. Artificial fly only."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Barneys River (Pictou)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the bridge at Avondale Crossing Road. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "French River (Pictou)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the confluence of the East and West branches. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "River John (Pictou)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the confluence of the East and West branches including the Salmon Hole. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Sutherlands River (Pictou)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from Park Falls. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Rainbow Trout",
+        "Brown Trout"
+      ],
+      "area": "Dobsons Lake (Guysborough)",
+      "season": "Jun 1 - Sep 30",
+      "bagLimit": "2 trout/day",
+      "notes": "Special Trout Management Area. Apr 1 to May 31: Closed to all angling. Sep 1 to Sep 30: all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Rainbow Trout",
+        "Brown Trout"
+      ],
+      "area": "Guysborough (Milford Haven) River (Guysborough)",
+      "season": "May 15 - Oct 31",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "Special Trout Management Area. Downstream from the bridge at West Interval to the Highway 16 bridge near Boylston. Apr 1 to May 14: closed to all angling. Sep 1 to Sep 30: all Brook Trout must be released. Oct 1 to Oct 31: brown Trout catch and release only, barbless artificial fly."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Rainbow Trout",
+        "Brown Trout"
+      ],
+      "area": "St. Mary's River - Lower Section (Guysborough)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "Special Trout Management Area. Upstream from the highway bridge at Sherbrooke to the 347 Bridge near Aspen on the East River, and upstream to the highway bridge at Glenelg on the West River. Artificial fly only. Sep 1 to Sep 30: all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Rainbow Trout",
+        "Brown Trout"
+      ],
+      "area": "St. Mary's River - Upper Section (Guysborough)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "Special Trout Management Area. Upstream from the 347 bridge near Aspen on the East River to the county boundary and upstream from the highway bridge at Glenelg on the West River to South Brook near Trafalgar. May 26 to Sep 30: artificial fly only. Sep 1 to Sep 30: all Brook Trout must be released. Some pools closed Jun 15 to Sep 30."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Rainbow Trout",
+        "Brown Trout"
+      ],
+      "area": "Salmon River (Guysborough)",
+      "season": "May 15 - Oct 31",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "Special Trout Management Area. From the outlet of Salmon River Lake downstream to Chedabucto Bay. Apr 1 to May 14: closed to all angling. Jul 1 to Sep 30: downstream from 50m below Highway 16 Bridge, artificial fly only. Sep 1 to Sep 30: all Brook Trout must be released. Oct 1 to Oct 31: brown Trout catch and release only, barbless artificial fly."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Rainbow Trout",
+        "Brown Trout"
+      ],
+      "area": "St. Francis Harbour River (Guysborough)",
+      "season": "May 15 - Oct 31",
+      "bagLimit": "1 trout > 35 cm",
+      "notes": "Special Trout Management Area. From the outlet of Goose Harbour Lake downstream to Chedabucto Bay. Apr 1 to May 14: closed to all angling. Single hook lure or artificial fly, natural bait prohibited. Sep 1 to Sep 30: all Brook Trout must be released. Oct 1 to Oct 31: brown Trout catch and release only, barbless artificial fly only."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Rainbow Trout",
+        "Brown Trout"
+      ],
+      "area": "East River - Lower Section (Pictou)",
+      "season": "May 15 - Sep 30",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "Special Trout Management Area. From Dunbar Point to Pine Point upstream to the Springville Bridge on the East Branch. Apr 1 to May 14: closed to all angling. Sep 1 to Sep 30: all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Rainbow Trout",
+        "Brown Trout"
+      ],
+      "area": "East River - Upper Section (Pictou)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "Special Trout Management Area. From Springville Bridge upstream to Hunters Lake and from the confluence of the West Branch upstream to the outflow of West Branch Lake. Sep 1 to Sep 30: all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Rainbow Trout",
+        "Brown Trout"
+      ],
+      "area": "West River (Pictou)",
+      "season": "May 15 - Sep 30",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "Special Trout Management Area. Downstream from the Highway 104 bridge. Apr 1 to May 14: closed to all angling. Sep 1 to Sep 30: all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Rainbow Trout",
+        "Brown Trout"
+      ],
+      "area": "South River - Upper Section (Antigonish)",
+      "season": "Apr 15 - Oct 31",
+      "bagLimit": "5 trout",
+      "notes": "Special Trout Management Area. From Loch Katrine bridge to Sunrise Trail bridge. Apr 1 to Apr 14: closed to all angling. Sep 1 to Sep 30: all Brook Trout must be released. Oct 1 to Oct 31: rainbow and brown Trout only, barbless artificial fly only, bag limit 2 trout."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Rainbow Trout",
+        "Brown Trout"
+      ],
+      "area": "South River - Lower Section (Antigonish)",
+      "season": "Apr 15 - Oct 31",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "Special Trout Management Area. From Sunrise Trail bridge to Williams Point and Antigonish Harbour. Apr 1 to Apr 14: closed to all angling. Sep 1 to Sep 30: all Brook Trout must be released. Oct 1 to Oct 31: rainbow and brown Trout only, barbless artificial fly only, bag limit 2 trout."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Rainbow Trout",
+        "Brown Trout"
+      ],
+      "area": "South River - Fraser's Mill (Antigonish)",
+      "season": "Closed all year",
+      "bagLimit": "Closed all year",
+      "notes": "From the dam immediately upstream from Fraser's Mill Fish Hatchery downstream to the bridge over the Old Pinevale Road."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Rainbow Trout",
+        "Brown Trout"
+      ],
+      "area": "West River - Upper Section (Antigonish)",
+      "season": "May 15 - Sep 30",
+      "bagLimit": "1 trout > 35 cm",
+      "notes": "Special Trout Management Area. Ohio River downstream from St. Joseph Lake and Beaver River downstream from MacEacherns Lake to Addington Forks bridge. Apr 1 to May 14: closed to all angling. Artificial fly only."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Rainbow Trout",
+        "Brown Trout"
+      ],
+      "area": "West River - Lower Section (Antigonish)",
+      "season": "May 15 - Sep 30",
+      "bagLimit": "1 trout > 35 cm",
+      "notes": "Special Trout Management Area. From Addington Forks bridge to Williams Point. Apr 1 to May 14: closed to all angling. Single hook lure or artificial fly, natural bait prohibited. Sep 1 to Sep 30: all Brook Trout must be released."
+    }
+  ]
+}

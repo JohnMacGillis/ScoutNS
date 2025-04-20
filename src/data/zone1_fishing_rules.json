@@ -1,0 +1,490 @@
+{
+  "zone": "RFA 1",
+  "notes": "The following regulations do not apply to the lakes and tributaries of those rivers unless specified. All season dates are inclusive.",
+  "rules": [
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Inland Waters and the Bras d'Or Lake. From Sep 1 to Sep 30, no Brook Trout may be retained, and natural bait is prohibited in all waters for all Trout species, except the Cape Breton Highlands Management Area and waters with extended seasons.",
+      "area": "Inland Waters and Bras d'Or Lake"
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Tidal Waters. From Sep 1 to Sep 30, no Brook Trout may be retained, and natural bait is prohibited in all waters for all Trout species, except the Cape Breton Highlands Management Area and waters with extended seasons.",
+      "area": "Tidal Waters"
+    },
+    {
+      "species": [
+        "Brook Trout"
+      ],
+      "season": "Open all year",
+      "bagLimit": "10 Brook Trout",
+      "notes": "Cape Breton Highlands Management Area. Natural bait allowed all season. Several specific waters are excluded from this area (see special waters).",
+      "area": "Cape Breton Highlands Management Area"
+    },
+    {
+      "species": [
+        "Rainbow Trout",
+        "Brook Trout"
+      ],
+      "season": "Open all year",
+      "bagLimit": "2 trout/day (Oct 1 - Mar 31)",
+      "notes": "Extended Season waters. Regular bag limit applies Apr 1 - Sep 30.",
+      "area": "Petite Lac (Inverness), #20 Dam Pond (Cape Breton), Eco-Trail Pond (Richmond), Dalem Lake, Grant's Pond (Victoria)"
+    },
+    {
+      "species": [
+        "Rainbow Trout",
+        "Brown Trout"
+      ],
+      "season": "Open all year",
+      "bagLimit": "2 trout/day (Oct 1 - Mar 31)",
+      "notes": "Minimum size limit for rainbow Trout is 35 cm, ALL YEAR. Any gear permitted.",
+      "area": "Tidal waters of the Bras d'Or Lakes, St. Patrick's Channel, St. Andrews Channel, and Sydney River"
+    },
+    {
+      "species": [
+        "Landlocked Salmon"
+      ],
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "Standard limits apply",
+      "notes": "Gabarus Lake, Cape Breton County.",
+      "area": null
+    },
+    {
+      "species": [
+        "Brown Trout"
+      ],
+      "season": "Apr 15 - Aug 31",
+      "bagLimit": "5 trout/day",
+      "notes": "Night fishing permitted.",
+      "area": "Salmon River (Cape Breton), downstream from the highway bridge near Rock Elm to its confluence with the Mira River"
+    },
+    {
+      "species": [
+        "Smallmouth Bass"
+      ],
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "All must be retained",
+      "notes": "All Smallmouth Bass in this RFA must be retained. Open season coincides with the season for Trout.",
+      "area": null
+    },
+    {
+      "species": [
+        "Chain Pickerel"
+      ],
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "All must be retained",
+      "notes": "All Chain Pickerel must be retained. Open season coincides with the season for Trout.",
+      "area": null
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Rainbow Trout"
+      ],
+      "season": "Open all year",
+      "bagLimit": "2 trout/day",
+      "notes": "Trophy Trout Stocking Program.",
+      "area": "Dalem (Round) Lake (Victoria)"
+    }
+  ],
+  "specialWaters": [
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Belfry Lake (Cape Breton)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Catalone River (Cape Breton)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the outlet of Belle Lake, including Catalone Lake. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Gabarus Lake (Cape Breton)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Gaspereau River (Cape Breton)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the outlet of Gaspereau Lake. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Gerratt Brook (Cape Breton)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the outlet of Kelly Lake. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Lorraine Brook (Cape Breton)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the outlet of MacVickers Lake. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Mira River (Cape Breton)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the highway bridge at Victoria Bridge. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Salmon River (Cape Breton)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the stillwater at Silver Mine. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Margaree River (Inverness)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the highway bridges at East Margaree. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Southwest Margaree River (Inverness)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the Scotsville bridge to the bridge at Margaree Forks. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Skye River (Inverness)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the lower East Skye Glen Bridge to the Highway 105 Bridge. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Framboise River (Richmond)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Including Middle River Framboise, Northeast Framboise River, and Bagnells River. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Grand River (Richmond)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the highway bridge at the head of Loch Lomond. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "L'Archeveque Lake (Richmond)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Marie Joseph Brook (Richmond)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the outlet of Upper Marie Joseph Lake. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "River Inhabitants (Richmond)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the Highway 105 bridge at Kingsville. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "River Tillard (Richmond)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the bridge at Sporting Mountain. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Rory's Pond (Richmond)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "St. Esprit Lake (Richmond)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Ingonish River (Victoria)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream to the Cabot Trail Highway bridge, including tributaries. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "Waters Closed to All Angling",
+      "season": "Closed",
+      "bagLimit": "Closed",
+      "notes": "Includes: (1) waters of the Baddeck River upstream from the Hwy 105 bridge; (2) Northeast (inside) of the East Bay Sandbar; (3) waters upstream from Black River bridge in Dundee; (4) waters upstream from Crowdis Bridge in river Deny's Basin; and (5) waters upstream from Mackenzie Brook Bridge near South Side Basin of River Deny's."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "Boom Channel and River Denys",
+      "season": "May 1 - Sep 30",
+      "bagLimit": "Standard limits apply",
+      "notes": "Waters inside the Boom Channel including River Denys and all of River Denys Basin are closed to Trout angling, Oct 1 to Mar 31. Closed to all angling Apr 1 to Apr 30."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Ingraham Brook (Inverness)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "2 trout/day",
+      "notes": "Trophy Trout Stocking Program. Upstream from the confluence with the Margaree River (at the Margaree Fish Hatchery) to East Big Interval Road. Apr 1 to Aug 31, any gear. Sep 1 to Sep 30, standard rules apply."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Margaree River Special Management Area (Inverness)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "Upstream from the highway bridges at East Margaree to the bridges at Big Intervale on the Northeast Margaree and to the bridge at Margaree Forks on the Southwest Margaree, and the Gallant River upstream from its confluence with the Margaree River to the highway bridge on the East Margaree Road. Apr 1 to Apr 14, closed to all angling. Jun 1 to the end of season: artificial fly only. Apr 15 to Aug 31, standard limits. Sep 1 to Sep 30, all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "Northeast Margaree River (Inverness)",
+      "season": "Closed all year",
+      "bagLimit": "Closed all year",
+      "notes": "Upstream from the bridges at Big Intervale."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Lake O'Law Brook (Inverness)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "Upstream from its confluence with the Northeast Margaree River to the outlet of First Lake O'Law. Apr 1 to Aug 31, standard limits. Sep 1 to Sep 30, all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "River Denys Special Management Area (Inverness)",
+      "season": "May 1 - Sep 30",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "Including tributaries, Denys Basin and Indian Pond. Apr 1 to Apr 30, closed to all angling. May 1 to Aug 31, standard limits. Sep 1 to Sep 30, all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Trout Brook (Inverness)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "From a point 96m upstream from Highway 395 Bridge to a point 137m downstream. Apr 1 to Aug 31, artificial fly only. Sep 1 to Sep 30, artificial fly only, all Brook Trout must be released. Upstream waters including tributaries are closed all year."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Grand River Special Management Area (Richmond)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "1 trout > 35 cm",
+      "notes": "From highway bridge at Grand River, upstream to highway bridge at Loch Lomond. Apr 1 to Apr 14, closed to all angling. Apr 15 to May 31, single hook lure or artificial fly, no natural bait. Jun 1 to Sep 30, artificial fly only. Sep 1 to Sep 30, all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Grand River Lower Section (Richmond)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "1 trout > 35 cm",
+      "notes": "Downstream from highway bridge at Grand River. Apr 1 to Apr 14, closed to all angling. Apr 15 to Aug 31, single hook lure or artificial fly, no natural bait. Sep 1 to Sep 30, all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "North Aspy River (Victoria)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "Varies by date",
+      "notes": "Upstream from Bay St. Lawrence Highway bridge to Cape Breton Highlands Park boundary. Apr 1 to Apr 14, closed to all angling. Apr 15 to May 31, bag limit 5 trout. Jun 1 to Aug 31, bag limit 3 trout (only one > 35 cm), single hook lure or artificial fly only, no natural bait. Sep 1 to Sep 30, all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Baddeck River (Victoria)",
+      "season": "May 15 - Oct 31",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "Upstream from 105 Highway bridge including North Branch Baddeck River, Peter's Brook and Cains Pond. Apr 1 to May 14, closed to all angling. May 15 to Aug 31, single hook lure or artificial fly, no natural bait. Sep 1 to Sep 30, all Brook Trout must be released. Oct 1 to Oct 31, rainbow and brown Trout only, barbless artificial fly only."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Middle River (Victoria)",
+      "season": "May 15 - Oct 31",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "Upstream from Highway 105 Bridge to Cabot Trail Highway Bridge near Finlayson, including tributaries except Indian Brook. Apr 1 to May 14, closed to all angling. May 15 to Aug 31, single hook lure or artificial fly, no natural bait. Sep 1 to Sep 30, all Brook Trout must be released. Oct 1 to Oct 31, rainbow and brown Trout only, barbless artificial fly only."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "Middle River - Upper Section (Victoria)",
+      "season": "Closed all year",
+      "bagLimit": "Closed all year",
+      "notes": "Upstream from the Cabot Trail Highway Bridge near Findlayson, including tributaries."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "North River (Victoria)",
+      "season": "May 15 - Sep 30",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "Upstream from the tidal pool to a point at the benches marked by a fishery officer, including tributaries. Apr 1 to May 14, closed to all angling. May 15 to Sep 30, artificial fly only. Jul 15 to Aug 31, upstream from Little Falls pool to the Benches closed to all angling. Sep 1 to Sep 30, all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "North River - Upper Section (Victoria)",
+      "season": "Closed all year",
+      "bagLimit": "Closed all year",
+      "notes": "Waters upstream from the benches marked by a fishery officer including tributaries."
+    }
+  ]
+}

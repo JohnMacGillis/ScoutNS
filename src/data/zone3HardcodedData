@@ -1,0 +1,217 @@
+export const zone3HardcodedData = {
+  "zone": "RFA 3",
+  "notes": "The following regulations do not apply to the lakes and tributaries of those rivers unless specified. All season dates are inclusive.",
+  "rules": [
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Inland waters and tidal waters of Lunenburg County and west of Halifax Harbour. From Sep 1 to Sep 30, no Brook Trout may be retained, and natural bait is prohibited in all waters for all Trout species, except waters with extended seasons for Trout.",
+      "area": "Inland Waters and Western Tidal Waters"
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Tidal waters of Halifax County (Halifax Harbour and East). From Sep 1 to Sep 30, no Brook Trout may be retained, and natural bait is prohibited in all waters for all Trout species, except waters with extended seasons for Trout.",
+      "area": "Eastern Tidal Waters"
+    },
+    {
+      "species": [
+        "Lake Trout",
+        "Grey Trout"
+      ],
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "Catch and release only",
+      "notes": "All lake (grey) Trout must be released. Bag limit zero (0) lake Trout.",
+      "area": null
+    },
+    {
+      "species": [
+        "Rainbow Trout",
+        "Brook Trout"
+      ],
+      "season": "Open all year",
+      "bagLimit": "2 trout/day (Oct 1 - Mar 31)",
+      "notes": "Extended Season waters. Regular bag limit applies Apr 1 - Sep 30.",
+      "area": "Albro Lake, Lewis Lake, Round Lake (Jerry Lawrence Park), Maynard Lake, Penhorn Lake, First Lake, Cow Bay Pond, Williams Lake (Halifax), Beck Lake, Hutt Lake, Sucker Lake (Lunenburg)"
+    },
+    {
+      "species": [
+        "Landlocked Salmon"
+      ],
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "Standard limits apply",
+      "notes": "General regulation.",
+      "area": null
+    },
+    {
+      "species": [
+        "Smallmouth Bass"
+      ],
+      "season": "Apr 1 - Oct 31",
+      "bagLimit": "5 bass/day",
+      "notes": "General regulation except for special management areas.",
+      "area": "General Waters"
+    }
+  ],
+  "specialWaters": [
+    {
+      "species": [
+        "Brook Trout"
+      ],
+      "area": "East Taylor Bay Lake (Halifax)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "2 Brook Trout",
+      "notes": "Including all lakes and tributaries flowing into East Taylor Bay Lake. From Sep 1 to Sep 30, all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Musquodoboit River - Lower Section (Halifax)",
+      "season": "May 1 - Sep 30",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "From the mouth of Musquodoboit Harbour to Chapel Island. Apr 1 to Apr 30, closed to all angling for all species. Sep 1 to Sep 30, all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Musquodoboit River - Middle Section (Halifax)",
+      "season": "Jun 1 - Sep 30",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "From a point 300m downstream from Highway 7 Bridge to Chapel Island. Apr 1 to May 31, closed to all angling. Sep 1 to Sep 30, all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Musquodoboit River - Upper Section (Halifax)",
+      "season": "May 1 - Sep 30",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "From a point 300m downstream from Highway 7 Bridge (including Tom Vaughans Pool), upstream to a point 100m above Crawfords Bridge. Apr 1 to Apr 30, closed to all angling. Artificial fly only. Sep 1 to Sep 30, all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Musquodoboit River - Headwaters (Halifax)",
+      "season": "May 1 - Aug 31",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "From a point 100m above Crawfords Bridge upstream to the confluence of the North and South branches near Dean. Apr 1 to Apr 30, closed to all angling for all species."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "LaHave River - Silver Hill to Wentzells Lake (Lunenburg)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "From Silver Hill Brook upstream to South end of Wentzells Lake. Apr 1 to May 25, single hook lure or artificial fly only, no natural bait. From May 26 onward, artificial fly only. Sep 1 to Sep 30, all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "LaHave River - Wentzells Lake to New Germany Lake (Lunenburg)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "From north end of Wentzells Lake to south end of New Germany Lake and West Branch to Rhynos Lake, North Branch to Sherbrooke Lake. Apr 1 to May 25, any gear. May 26 onward, artificial fly only. Sep 1 to Sep 30, all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Petite Riviere (Lunenburg)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "From Highway 331 Bridge upstream to Hebb Lake, not including Fancys Lake or tributaries. Apr 1 to Jun 14, single hook lure or artificial fly only, no natural bait. Jun 15 onward, artificial fly only. Sep 1 to Sep 30, all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "Moser River (Halifax)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "Standard limits apply",
+      "notes": "Upstream from the highway bridge at Moser River, not including tributaries. May 26 to end of all fishing seasons, artificial fly only."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "Sackville River (Halifax)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "Standard limits apply",
+      "notes": "From a point 50m below Shore Drive Bridge near Bedford to a point 200m upstream from Lucasville Road Bridge, not including tributaries. Jun 1 to end of all fishing seasons, artificial fly only."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "Little Sackville River (Halifax)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "Standard limits apply",
+      "notes": "From confluence with Sackville River upstream to outlet of Feely Lake, not including tributaries. Jun 1 to end of all fishing seasons, artificial fly only."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "West River Sheet Harbour (Halifax)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "Standard limits apply",
+      "notes": "From concrete piers downstream of Highway 7 Bridge upstream to Killag River, not including tributaries. May 26 to end of all fishing seasons, artificial fly only."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "Gold River (Lunenburg)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "Standard limits apply",
+      "notes": "From Highway 3 bridge upstream to Larder River, not including tributaries. May 26 to end of all fishing seasons, artificial fly only."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "East River Sheet Harbour - Barrier Dam to Malay Falls (Halifax)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "Standard limits apply",
+      "notes": "From Fisheries and Oceans Canada barrier dam upstream to Malay Falls, including tributaries. Closed Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "East River Sheet Harbour - Ruth Falls (Halifax)",
+      "season": "Apr 1 - May 31",
+      "bagLimit": "Standard limits apply",
+      "notes": "From Powerhouse at Ruth Falls downstream 200m, including tributaries. Closed Jun 1 to Sep 30."
+    }
+  ]
+};

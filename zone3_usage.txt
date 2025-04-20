@@ -1,0 +1,16 @@
+src/features/zones/hooks/useZoneState.tsx:import zone3Data from '../../../data/zone3_fishing_rules.json';
+src/features/zones/hooks/useZoneState.tsx:  'RFA 3': zone3Data,
+src/features/zones/hooks/useZoneState.tsx:      zone === 'RFA 3' || zone === 'RFA 4' || 
+src/features/ui/components/SidebarPanel.tsx:  const fishingZones = ['RFA 1', 'RFA 2', 'RFA 3', 'RFA 4', 'RFA 5', 'RFA 6'];
+src/data/specialWatersData.ts:  'RFA 3': [
+src/data/zoneRuleMap.ts:import zone3Data from './zone3_fishing_rules.json';
+src/data/zoneRuleMap.ts:  'RFA 3': zone3Data,
+src/data/zoneRuleMap.ts:  'RFA 3': !!zone3Data,
+src/data/zoneData.ts:import zone3Data from './zone3_fishing_rules.json';
+src/data/zoneData.ts:export const zone3 = zone3Data;
+src/data/zoneData.ts:  'RFA 3': zone3Data,
+src/data/zoneData.ts:  'RFA 3': !!zone3Data,
+src/pages/ScoutNSApp.tsx:import zone3Rules from '../data/zone3_fishing_rules.json';
+src/pages/ScoutNSApp.tsx:  const fishingZones = ['RFA 1', 'RFA 2', 'RFA 3', 'RFA 4', 'RFA 5', 'RFA 6'];
+src/pages/ScoutNSApp.tsx:      case 'RFA 3':
+src/pages/ScoutNSApp.tsx:        zoneRules = zone3Rules;

@@ -1,0 +1,168 @@
+{
+  "zone": "RFA 4",
+  "notes": "The following regulations do not apply to the lakes and tributaries of those rivers unless specified. All season dates are inclusive.",
+  "rules": [
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Inland and Tidal Waters. From Sep 1 to Sep 30, no Brook Trout may be retained, and natural bait is prohibited in all waters for all Trout species, including Special Trout Management Areas, except waters with extended seasons for Trout.",
+      "area": "Inland and Tidal Waters"
+    },
+    {
+      "species": [
+        "Rainbow Trout",
+        "Brook Trout"
+      ],
+      "season": "Open all year",
+      "bagLimit": "2 trout/day (Oct 1 - Mar 31)",
+      "notes": "Extended Season waters. Regular bag limit applies Apr 1 - Sep 30.",
+      "area": "Everitts Lake (Digby), Hidden Hills Lake and Victoria Lake (Queens)"
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Rainbow Trout"
+      ],
+      "season": "Open all year",
+      "bagLimit": "2 trout/day",
+      "notes": "Trophy Trout Stocking Program.",
+      "area": "Allens Lake (Yarmouth), First, Second, Third, and Fourth Christopher lakes (Queens)"
+    },
+    {
+      "species": [
+        "Brown Trout"
+      ],
+      "season": "Apr 1 - Oct 31",
+      "bagLimit": "5 trout/day",
+      "notes": "Night fishing permitted.",
+      "area": "Mersey River (Queens), downstream from Lake Rossignol to the dam at Cowie Falls"
+    },
+    {
+      "species": [
+        "Smallmouth Bass"
+      ],
+      "season": "Apr 1 - Oct 31",
+      "bagLimit": "5 bass/day",
+      "notes": "General regulation except for special management areas and extended seasons.",
+      "area": "General Waters"
+    },
+    {
+      "species": [
+        "Smallmouth Bass"
+      ],
+      "season": "Apr 1 - Dec 31",
+      "bagLimit": "3 bass/day (max length 35 cm)",
+      "notes": "Special Bass Management Areas. From May 1 to Jun 15 no Smallmouth Bass may be retained. Night fishing permitted only in specific lakes.",
+      "area": "Salmon River Lake (Digby), Ten Mile Lake, Little Ten Mile Lake, Mersey River (Queens), Kemptback Lake, Ogden, Parr, Petes Lakes, Lake Vaughan Reservoir (Yarmouth)"
+    },
+    {
+      "species": [
+        "Smallmouth Bass"
+      ],
+      "season": "Apr 1 - Dec 31",
+      "bagLimit": "5 bass/day",
+      "notes": "Extended Season for Smallmouth Bass.",
+      "area": "Wentworth Lake (Digby), Doctors Lake, Lake Milo, Middle Lake, Raynards Lake (Yarmouth)"
+    },
+    {
+      "species": [
+        "Chain Pickerel"
+      ],
+      "season": "Varies by water body",
+      "bagLimit": "All must be retained",
+      "notes": "All Chain Pickerel must be retained. Open season coincides with the season for a sportfish.",
+      "area": null
+    },
+    {
+      "species": [
+        "White Perch",
+        "Yellow Perch"
+      ],
+      "season": "Varies by water body",
+      "bagLimit": "25 fish/day",
+      "notes": "Open season coincides with the season for a sportfish.",
+      "area": null
+    }
+  ],
+  "specialWaters": [
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Big Meadow Brook, Tusket River (Yarmouth)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "Catch and release only",
+      "notes": "Upstream from Highway 203 near East Kemptville. Single hook lure or artificial fly, natural bait is prohibited."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "Medway River - Highway 103 to McGowan Lake (Queens)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "Standard limits apply",
+      "notes": "From the Highway 103 bridge upstream to McGowan Lake, not including Ponhook Lake or tributaries. May 26 to the end of fishing seasons, artificial fly only."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "Mersey River - Milton to Cowie Falls (Queens)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "Standard limits apply",
+      "notes": "From the upstream abutment of the highway bridge on Bridge Street in Milton to the dam at Cowie Falls. May 26 to the end of fishing seasons, artificial fly only."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "Salmon River - Route 1 Bridge area (Digby)",
+      "season": "Apr 1 - Apr 30",
+      "bagLimit": "Standard limits apply",
+      "notes": "Downstream from the Route 1 Highway Bridge approximately 500m to a line drawn across the Salmon River from grid reference 726822 4881333 to grid reference 726803 4881420, including tributaries. Closed May 1 to Dec 31."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "Medway River - Harmony Mills to McGowan Lake (Queens)",
+      "season": "Apr 1 - May 31",
+      "bagLimit": "Standard limits apply",
+      "notes": "From a point 100m downstream from the highway bridge on the Old Westfield Road near Harmony Mills upstream to, but excluding McGowan Lake, including tributaries. Closed Jun 1 to Dec 31."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "Medway River - 'Lake Pool' (Queens)",
+      "season": "Apr 1 - Jun 14",
+      "bagLimit": "Standard limits apply",
+      "notes": "The 'Lake Pool', upstream from the highway bridge at highway 210 at Greenfield, to a straight line drawn from grid reference 352032 4903571 to grid reference 352155 4903817 (immediately above the small island at the outlet of Ponhook Lake). Closed Jun 15 to Dec 31."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "Medway River - Greenfield to Highway 103 (Queens)",
+      "season": "Apr 1 - Jun 14, Aug 1 - Sep 30",
+      "bagLimit": "Standard limits apply",
+      "notes": "From the highway 210 bridge at Greenfield downstream to the highway 103 bridge. Closed Jun 15 to Jul 31."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "Tusket River - Lake Vaughan area (Yarmouth)",
+      "season": "Jul 1 - Sep 30",
+      "bagLimit": "Standard limits apply",
+      "notes": "From the highway bridge crossing the canal at the southern end of Lake Vaughan Reservoir downstream to the powerhouse dam, including tributaries. Closed Apr 1 to Jun 30."
+    }
+  ]
+}

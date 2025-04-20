@@ -1,0 +1,17 @@
+src/features/zones/hooks/useZoneState.ts:          case 'RFA 1':
+src/features/zones/hooks/useZoneState.ts:            zoneRules = await import('../../../data/zone1_fishing_rules.json');
+src/features/zones/hooks/useZoneState.tsx:import zone1Data from '../../../data/zone1_fishing_rules.json';
+src/features/zones/hooks/useZoneState.tsx:  'RFA 1': zone1Data,
+src/features/zones/hooks/useZoneState.tsx:  if (zone === 'RFA 1' || zone === 'RFA 2' || 
+src/features/ui/components/SidebarPanel.tsx:  const fishingZones = ['RFA 1', 'RFA 2', 'RFA 3', 'RFA 4', 'RFA 5', 'RFA 6'];
+src/data/zoneRuleMap.ts:import zone1Data from './zone1_fishing_rules.json';
+src/data/zoneRuleMap.ts:  'RFA 1': zone1Data,
+src/data/zoneRuleMap.ts:  'RFA 1': !!zone1Data,
+src/data/zoneData.ts:import zone1Data from './zone1_fishing_rules.json';
+src/data/zoneData.ts:export const zone1 = zone1Data;
+src/data/zoneData.ts:  'RFA 1': zone1Data,
+src/data/zoneData.ts:  'RFA 1': !!zone1Data,
+src/pages/ScoutNSApp.tsx:import zone1Rules from '../data/zone1_fishing_rules.json';
+src/pages/ScoutNSApp.tsx:  const fishingZones = ['RFA 1', 'RFA 2', 'RFA 3', 'RFA 4', 'RFA 5', 'RFA 6'];
+src/pages/ScoutNSApp.tsx:      case 'RFA 1':
+src/pages/ScoutNSApp.tsx:        zoneRules = zone1Rules;

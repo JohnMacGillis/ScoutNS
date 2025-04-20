@@ -1,0 +1,325 @@
+{
+  "zone": "RFA 6",
+  "notes": "The following regulations do not apply to the lakes and tributaries of those rivers unless specified. All season dates are inclusive.",
+  "rules": [
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Inland Waters. From Sep 1 to Sep 30, no Brook Trout may be retained, and natural bait is prohibited in all waters for all Trout species, including Special Trout Management Areas, except in waters with extended seasons for Trout.",
+      "area": "Inland Waters"
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Tidal Waters. From Sep 1 to Sep 30, no Brook Trout may be retained, and natural bait is prohibited in all waters for all Trout species, including Special Trout Management Areas, except in waters with extended seasons for Trout.",
+      "area": "Tidal Waters"
+    },
+    {
+      "species": [
+        "Rainbow Trout",
+        "Brook Trout"
+      ],
+      "season": "Open all year",
+      "bagLimit": "2 trout/day (Oct 1 - Mar 31)",
+      "notes": "Extended Season waters. Regular bag limit applies Apr 1 - Sep 30.",
+      "area": "Harrison Lake, Isaac Lake (Cumberland)"
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Rainbow Trout"
+      ],
+      "season": "Open all year",
+      "bagLimit": "2 trout/day",
+      "notes": "Trophy Trout Stocking Program.",
+      "area": "Deyarmont Lake (Colchester)"
+    },
+    {
+      "species": [
+        "Smallmouth Bass"
+      ],
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "All must be retained",
+      "notes": "All Smallmouth Bass in this area of the RFA must be retained. Open season coincides with the season for Trout.",
+      "area": "All waters east of Highway 102 from its junction with Highway 104"
+    },
+    {
+      "species": [
+        "Chain Pickerel"
+      ],
+      "season": "Varies by water body",
+      "bagLimit": "All must be retained",
+      "notes": "All Chain Pickerel must be retained. Open season coincides with the season for a sportfish.",
+      "area": null
+    },
+    {
+      "species": [
+        "White Perch",
+        "Yellow Perch"
+      ],
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "25 fish/day",
+      "notes": "General regulation for White and Yellow Perch.",
+      "area": "General Waters"
+    },
+    {
+      "species": [
+        "White Perch",
+        "Yellow Perch"
+      ],
+      "season": "Jan 1 - Sep 30",
+      "bagLimit": "25 fish/day",
+      "notes": "Extended season.",
+      "area": "Smiths Lakes and Long Lake (Cumberland)"
+    },
+    {
+      "species": [
+        "White Perch",
+        "Yellow Perch"
+      ],
+      "season": "Open all year",
+      "bagLimit": "25 fish/day",
+      "notes": "Extended season.",
+      "area": "Harrison Lake, Isaac Lake (Cumberland), Shortt's Lake (Colchester)"
+    }
+  ],
+  "specialWaters": [
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "French River (Colchester)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the 246 Highway Bridge at Oliver. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Waughs River (Colchester)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the 256 Highway Bridge at The Falls. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Shinimicas River (Cumberland)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the No. 6 Highway bridge, including tributaries. Closed to all angling Apr 1 to Apr 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Chiganois River (Colchester)",
+      "season": "May 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the CN Railway bridge at Belmont, including tributaries. Closed to all angling Apr 1 to May 15."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Debert River (Colchester)",
+      "season": "May 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the CN Railway bridge, including tributaries. Closed to all angling Apr 1 to May 15."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Economy River (Colchester)",
+      "season": "May 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the confluence with Callaghan Brook, including tributaries. Closed to all angling Apr 1 to May 15."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Folly River (Colchester)",
+      "season": "May 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the CN Railway bridge, including tributaries. Closed to all angling Apr 1 to May 15."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Great Village River (Colchester)",
+      "season": "May 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the confluence with Spencers Brook, including tributaries. Closed to all angling Apr 1 to May 15."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "North River (Colchester)",
+      "season": "May 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the confluence of the West Branch North River, including tributaries. Closed to all angling Apr 1 to May 15."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Portapique River (Colchester)",
+      "season": "May 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the confluence with Matheson Brook, including tributaries. Closed to all angling Apr 1 to May 15."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Salmon River (Colchester)",
+      "season": "May 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the confluence with Greenfield Brook, including tributaries. Closed to all angling Apr 1 to May 15."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "River Hebert (Cumberland)",
+      "season": "May 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Downstream from the bridge near the tree nursery in the Chignecto Game Sanctuary, including tributaries. Closed to all angling Apr 1 to May 14."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Pugwash River (Cumberland)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Standard regulations."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Stewiacke River - Lower Section (Colchester)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Special Trout Management Area. Downstream from the CN railway bridge near McKay Siding. Apr 1 to Apr 14, closed to all angling. Apr 15 to May 9 and Jun 11 to Aug 31, any gear permitted. May 10 to Jun 10, single hook lure or artificial fly, natural bait prohibited."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Stewiacke River - Middle Section (Colchester)",
+      "season": "May 10 - Sep 30",
+      "bagLimit": "1 trout > 35 cm",
+      "notes": "Special Trout Management Area. From CN railway bridge near McKay Siding to highway bridge in Upper Stewiacke. Apr 1 to May 9, closed to all angling. May 10 to Jul 15, single hook lure or artificial fly, no natural bait. Jul 16 to Aug 31, artificial fly only. Sep 1 to Sep 30, all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Stewiacke River - Upper Section (Colchester)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Special Trout Management Area. Upstream from highway bridge in Upper Stewiacke. Apr 1 to Aug 31, any gear permitted. Sep 1 to Sep 30, all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "Brown Trout"
+      ],
+      "area": "Stewiacke River - Lansdowne to Stewiacke East (Colchester)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "Night angling for brown Trout is permitted from the Lansdowne bridge downstream to the bridge in Stewiacke East during the open season."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "River Philip - Below Spencers Bridge (Cumberland)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "Special Trout Management Area. Downstream from Mountain Road Bridge (Spencers Bridge). Apr 1 to May 14, catch and release only, artificial fly only. May 15 to Aug 31, any gear permitted. Sep 1 to Sep 30, all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "Brown Trout"
+      ],
+      "area": "River Philip - Above Spencers Bridge (Cumberland)",
+      "season": "May 15 - Aug 31",
+      "bagLimit": "5 trout/day",
+      "notes": "Night angling for brown Trout is permitted upstream from the Mountain Road Bridge (Spencers Bridge) not including tributaries."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Maccan River (Cumberland)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "Special Trout Management Area. Downstream from Highway 2 bridge at Southampton. Apr 1 to May 14, catch and release only, artificial fly only. May 15 to Aug 15, any gear permitted. Aug 16 to Sep 30, catch and release only, artificial fly only."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Wallace River (Cumberland)",
+      "season": "Apr 15 - Sep 30",
+      "bagLimit": "3 trout (only one > 35 cm)",
+      "notes": "Special Trout Management Area. Downstream from Highway 4 Bridge at Wentworth Center. Apr 1 to Apr 14, closed to all angling. Downstream from Barclay Rd. (Main branch) and Greenville Road (West branch) to Kerrs Mills Bridge, single hook lure or artificial fly only, no bait permitted. Sep 1 to Sep 30, all Brook Trout must be released."
+    }
+  ]
+}

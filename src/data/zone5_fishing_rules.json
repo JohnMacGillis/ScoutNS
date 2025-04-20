@@ -1,0 +1,190 @@
+{
+  "zone": "RFA 5",
+  "notes": "The following regulations do not apply to the lakes and tributaries of those rivers unless specified. All season dates are inclusive.",
+  "rules": [
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "5 trout/day",
+      "notes": "From Sep 1 to Sep 30, no Brook Trout may be retained, and natural bait is prohibited in all waters for all Trout species, including Special Trout Management Areas, except waters with extended seasons for Trout.",
+      "area": "Inland and Tidal Waters"
+    },
+    {
+      "species": [
+        "Rainbow Trout",
+        "Brook Trout"
+      ],
+      "season": "May 15 - Oct 31",
+      "bagLimit": "5 trout/day (2 trout/day Oct 1-31)",
+      "notes": "Extended season. The bag limit is reduced to two (2) Trout, either species or combined, Oct 1 to Mar 31.",
+      "area": "Rumsey Lake (Annapolis)"
+    },
+    {
+      "species": [
+        "Rainbow Trout",
+        "Brook Trout"
+      ],
+      "season": "May 15 - Oct 31, Jan 1 - Mar 31",
+      "bagLimit": "5 trout/day (2 trout/day Oct 1-31, Jan 1-Mar 31)",
+      "notes": "Extended season. The bag limit is reduced to two (2) Trout, either species or combined, Oct 1 to Mar 31.",
+      "area": "Sunken Lake (Kings)"
+    },
+    {
+      "species": [
+        "Rainbow Trout",
+        "Brook Trout"
+      ],
+      "season": "Apr 1 - Sep 30, Jan 1 - Mar 31",
+      "bagLimit": "5 trout/day (2 trout/day Jan 1-Mar 31)",
+      "notes": "Extended season. The bag limit is reduced to two (2) Trout, either species or combined, Jan 1 to Mar 31.",
+      "area": "Silver Lake near Lakeville (Kings)"
+    },
+    {
+      "species": [
+        "Rainbow Trout",
+        "Brook Trout"
+      ],
+      "season": "Open all year",
+      "bagLimit": "5 trout/day (2 trout/day Oct 1-Mar 31)",
+      "notes": "Extended season. The bag limit is reduced to two (2) Trout, either species or combined, Oct 1 to Mar 31.",
+      "area": "Meadow Pond (Hants)"
+    },
+    {
+      "species": [
+        "Brown Trout"
+      ],
+      "season": "Apr 1 - Oct 31",
+      "bagLimit": "5 trout/day",
+      "notes": "Night fishing permitted.",
+      "area": "Cornwallis River (Kings)"
+    },
+    {
+      "species": [
+        "Smallmouth Bass"
+      ],
+      "season": "Apr 1 - Oct 31",
+      "bagLimit": "5 bass/day",
+      "notes": "General regulation for Annapolis and Kings Counties.",
+      "area": "Annapolis and Kings Counties"
+    },
+    {
+      "species": [
+        "Smallmouth Bass"
+      ],
+      "season": "Apr 1 - Oct 31",
+      "bagLimit": "25 bass/day",
+      "notes": "General regulation for Hants County.",
+      "area": "Hants County"
+    },
+    {
+      "species": [
+        "Smallmouth Bass"
+      ],
+      "season": "Apr 1 - Dec 31",
+      "bagLimit": "3 bass/day (max length 35 cm)",
+      "notes": "Special Bass Management Areas. From May 1 to Jun 15 no Smallmouth Bass may be retained. Night fishing is permitted.",
+      "area": "Black River Lake, Little River Lake, Methals Lake, Aylesford Lake (including Loon Lake) (Kings), Panuke Lake (Hants)"
+    },
+    {
+      "species": [
+        "Smallmouth Bass"
+      ],
+      "season": "Apr 1 - Dec 31",
+      "bagLimit": "5 bass/day",
+      "notes": "Extended Season for Smallmouth Bass.",
+      "area": "Gaspereau Lake (Kings)"
+    },
+    {
+      "species": [
+        "Chain Pickerel"
+      ],
+      "season": "Varies by water body",
+      "bagLimit": "All must be retained",
+      "notes": "All Chain Pickerel must be retained. Open season coincides with the season for a sportfish.",
+      "area": null
+    },
+    {
+      "species": [
+        "White Perch",
+        "Yellow Perch"
+      ],
+      "season": "Apr 1 - Oct 31",
+      "bagLimit": "25 fish/day",
+      "notes": "General regulation for White and Yellow Perch.",
+      "area": "General Waters"
+    },
+    {
+      "species": [
+        "White Perch",
+        "Yellow Perch"
+      ],
+      "season": "Open all year",
+      "bagLimit": "25 fish/day",
+      "notes": "Extended season.",
+      "area": "Springfield Lake (Annapolis), Woodward Sandford Lake (Hants)"
+    }
+  ],
+  "specialWaters": [
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout"
+      ],
+      "area": "Cornwallis River - South Bishop Road to Highway 101 (Kings)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "1 trout > 35 cm",
+      "notes": "Special Trout Management Area. Downstream from the South Bishop Road bridge to the Highway 101 Bridge. Apr 1 to Aug 31, single hook lure or artificial fly, natural bait is prohibited. Sep 1 to Sep 30, all Brook Trout must be released."
+    },
+    {
+      "species": [
+        "Brown Trout"
+      ],
+      "area": "Cornwallis River - Entire River (Kings)",
+      "season": "Oct 1 - Oct 31",
+      "bagLimit": "Catch and release only",
+      "notes": "Special Trout Management Area. Brown Trout only, catch and release, artificial fly only."
+    },
+    {
+      "species": [
+        "Brook Trout",
+        "Brown Trout",
+        "Rainbow Trout"
+      ],
+      "area": "Upper Medway Special Trout Management Area (Annapolis)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "2 trout",
+      "notes": "Multiple lakes within the Upper Medway Lakes Wilderness Area. Sep 1 to Sep 30, all Brook Trout must be released, bag limit 2 Trout (brown or rainbow), natural bait is prohibited."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "Gaspereau River - White Rock area (Kings)",
+      "season": "Closed all year",
+      "bagLimit": "Closed all year",
+      "notes": "From the White Rock power station upstream to the first highway bridge, including tributaries."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "Gaspereau River - White Rock Pond (Kings)",
+      "season": "Apr 1 - Sep 30",
+      "bagLimit": "Standard limits apply",
+      "notes": "From a point 152m downstream from the bridge at White Rock (Deep Hollow Road Bridge), downstream to the first highway bridge upstream from the White Rock Power Station. Apr 1 to May 1, single hook lure or artificial fly."
+    },
+    {
+      "species": [
+        "All Species"
+      ],
+      "area": "Gaspereau River - Deep Hollow Road Bridge area (Kings)",
+      "season": "Closed all year",
+      "bagLimit": "Closed all year",
+      "notes": "From a point 152m downstream from the highway bridge at White Rock (Deep Hollow Road Bridge) to point 213m upstream from that bridge, including tributaries."
+    }
+  ]
+}

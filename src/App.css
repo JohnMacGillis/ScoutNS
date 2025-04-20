@@ -1,0 +1,25 @@
+/* === Global Reset & Base Styles === */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: #121612;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+/* Optional: Smooth scroll for flyouts or sidebars */
+* {
+  scroll-behavior: smooth;
+}
+
+/* === Remove old demo styles === */
+.logo,
+.logo:hover,
+.logo.react:hover,
+.card,
+.read-the-docs {
+  all: unset;
+}
