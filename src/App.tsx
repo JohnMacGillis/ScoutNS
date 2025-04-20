@@ -17,6 +17,8 @@ import { zoneRuleMap } from './data/zoneRuleMap'
   console.log(`[App] Forcing zoneRuleMap access for ${zone}:`, zoneRuleMap[zone]);
 });
 
+// Make specialWatersData available globally for components that need it
+(window as any).specialWatersData = specialWatersData;
 
 const App = () => {
   const [mode, setMode] = useState<'fishing' | 'hunting'>('fishing');
@@ -52,6 +54,7 @@ const App = () => {
                 return result || null;
               }}
               getRegulationColor={getRegulationColor}
+              selectedSpecies={selectedSpecies} // Pass selected species to the RegulationsPanel
             />
           </div>
         </ZoneDebugProvider>
