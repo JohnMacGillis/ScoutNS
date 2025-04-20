@@ -14,6 +14,7 @@ import specialWatersData from '../../../data/specialWatersData';
 interface RegulationsPanelProps {
   findMatchingSpecialWater: (rule: FishingRule) => SpecialWater | null;
   getRegulationColor: (type: string) => string;
+  selectedSpecies: string[]; // Add this prop to receive selected species
 }
 
 // Interface for synthetic rule with optional synthetic flag
@@ -22,7 +23,11 @@ interface SyntheticRule extends FishingRule {
   waterId?: string;
 }
 
-const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: RegulationsPanelProps) => {
+const RegulationsPanel = ({ 
+  findMatchingSpecialWater, 
+  getRegulationColor,
+  selectedSpecies // Use the selected species for filtering
+}: RegulationsPanelProps) => {
   const zoneState = useZoneState() as any;
   const { selectedZone, zoneData, isLoading, setSelectedZone } = zoneState;
   const setShowRegulationsPanel = zoneState.setShowRegulationsPanel || (() => {});
@@ -152,6 +157,31 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
     } catch (error) {
       return false;
     }
+  };
+
+  // Function to check if a rule should be displayed based on selected species
+  const shouldShowRule = (rule: FishingRule): boolean => {
+    // If no species are selected, show all rules
+    if (!selectedSpecies || selectedSpecies.length === 0) {
+      return true;
+    }
+    
+    // If the rule doesn't have species information, show it anyway
+    if (!rule.species || rule.species.length === 0) {
+      return true;
+    }
+    
+    // If the rule applies to "All Species", always show it
+    if (rule.species.some(species => 
+      species === "All Species" || 
+      species === "Various species" || 
+      species.toLowerCase() === "all species"
+    )) {
+      return true;
+    }
+    
+    // Check if any of the rule's species match the selected species
+    return rule.species.some(species => selectedSpecies.includes(species));
   };
 
   // Add synthetic rules for any extended season waters
@@ -288,6 +318,16 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
   // Get all special water rules including synthetic ones
   const allSpecialWaterRules = getAllSpecialWaterRules();
   
+  // Filter rules based on selected species
+  const filteredGeneralRules = zoneData.rules
+    ? zoneData.rules.filter(shouldShowRule)
+    : [];
+  
+  const filteredSpecialWaterRules = allSpecialWaterRules.filter(shouldShowRule);
+  
+  // Display a message if no rules match the selected species filter
+  const noRulesMatch = filteredGeneralRules.length === 0 && filteredSpecialWaterRules.length === 0;
+  
   return (
     <div
       ref={(el) => {
@@ -319,44 +359,78 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
         </Text>
       )}
 
-      {/* Special Waters Legend */}
-      <div style={{
-        backgroundColor: 'rgba(46, 65, 46, 0.3)',
-        borderRadius: 8,
-        padding: 12,
-        marginBottom: 16
-      }}>
-        <Text size="sm" style={{ fontWeight: 700, marginBottom: 8 }}>
-          Special Waters Legend
-        </Text>
-
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-          {Object.entries(regulationColors).map(([type, color]) => (
-            <div key={type} style={{
-              display: 'flex',
-              alignItems: 'center',
-              backgroundColor: 'rgba(0, 0, 0, 0.2)',
-              padding: '4px 8px',
-              borderRadius: 4,
-              marginBottom: 4
-            }}>
-              <div
-                style={{
-                  width: 10,
-                  height: 10,
-                  borderRadius: '50%',
-                  backgroundColor: color,
-                  border: '1px solid rgba(255, 255, 255, 0.7)',
-                  marginRight: 6
-                }}
-              />
-              <Text size="xs">
-                {regulationNames[type as keyof typeof regulationNames]}
-              </Text>
-            </div>
-          ))}
+      {/* Species Filter Information */}
+      {selectedSpecies && selectedSpecies.length > 0 && (
+        <div style={{
+          backgroundColor: 'rgba(75, 95, 75, 0.4)',
+          borderRadius: 8,
+          padding: 12,
+          marginBottom: 16
+        }}>
+          <Text size="sm" style={{ fontWeight: 600 }}>
+            Showing rules for: {selectedSpecies.join(', ')}
+          </Text>
+          <Text size="xs" style={{ marginTop: 4, opacity: 0.9 }}>
+            Rules that apply to all species are always shown.
+          </Text>
         </div>
-      </div>
+      )}
+
+      {/* No Rules Match Message */}
+      {noRulesMatch && (
+        <div style={{
+          backgroundColor: 'rgba(75, 0, 0, 0.3)',
+          borderRadius: 8,
+          padding: 12,
+          marginBottom: 16,
+          marginTop: 16
+        }}>
+          <Text size="sm" style={{ fontWeight: 600, color: '#ffcccc' }}>
+            No rules found for the selected species. Try selecting different species or clear your selection to see all rules.
+          </Text>
+        </div>
+      )}
+
+      {/* Special Waters Legend */}
+      {!noRulesMatch && (
+        <div style={{
+          backgroundColor: 'rgba(46, 65, 46, 0.3)',
+          borderRadius: 8,
+          padding: 12,
+          marginBottom: 16
+        }}>
+          <Text size="sm" style={{ fontWeight: 700, marginBottom: 8 }}>
+            Special Waters Legend
+          </Text>
+
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+            {Object.entries(regulationColors).map(([type, color]) => (
+              <div key={type} style={{
+                display: 'flex',
+                alignItems: 'center',
+                backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                padding: '4px 8px',
+                borderRadius: 4,
+                marginBottom: 4
+              }}>
+                <div
+                  style={{
+                    width: 10,
+                    height: 10,
+                    borderRadius: '50%',
+                    backgroundColor: color,
+                    border: '1px solid rgba(255, 255, 255, 0.7)',
+                    marginRight: 6
+                  }}
+                />
+                <Text size="xs">
+                  {regulationNames[type as keyof typeof regulationNames]}
+                </Text>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Special water details notification banner */}
       {selectedWater && selectedWaterRule && (
@@ -389,12 +463,12 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
       )}
 
       {/* General Rules */}
-      {zoneData.rules && zoneData.rules.length > 0 && (
+      {filteredGeneralRules.length > 0 && (
         <div style={{ marginBottom: 20 }}>
           <Text size="sm" style={{ fontWeight: 700, marginBottom: 8, borderBottom: '1px solid #444' }}>
             General Rules
           </Text>
-          {zoneData.rules.map((rule: FishingRule, idx: number) => (
+          {filteredGeneralRules.map((rule: FishingRule, idx: number) => (
             <div
               key={`rule-${idx}`}
               style={{
@@ -420,7 +494,7 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
       )}
 
       {/* Special Waters Section */}
-      {allSpecialWaterRules.length > 0 && (
+      {filteredSpecialWaterRules.length > 0 && (
         <div style={{
           marginTop: 30,
           backgroundColor: 'rgba(46, 65, 46, 0.3)',
@@ -437,7 +511,7 @@ const RegulationsPanel = ({ findMatchingSpecialWater, getRegulationColor }: Regu
               root: { borderTop: '2px solid #4d734d' }
             }}
           />
-          {allSpecialWaterRules.map((rule: FishingRule, idx: number) => {
+          {filteredSpecialWaterRules.map((rule: FishingRule, idx: number) => {
             if (!rule || !rule.area) return null;
 
             // Get the regulation type based on matching water
