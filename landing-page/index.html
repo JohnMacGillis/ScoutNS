@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScoutNS - Nova Scotia Fishing Regulations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Chakra Petch', sans-serif;
+            color: #e0ffe0;
+            background-color: #121612;
+            line-height: 1.6;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: rgba(28, 31, 28, 0.95);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #444;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 60px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: #a0ffa0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.2s ease;
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            color: #70d670;
+            background-color: rgba(75, 95, 75, 0.3);
+        }
+        
+        .cta-button {
+            background-color: #70d670;
+            color: #121612;
+            font-weight: 700;
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-block;
+            text-decoration: none;
+            font-family: 'Chakra Petch', sans-serif;
+        }
+        
+        .cta-button:hover {
+            background-color: #5bc45b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background-color: #0f1a0f; /* Fallback */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 1rem 5rem 1rem;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            background-color: rgba(18, 22, 18, 0.75);
+            border-radius: 12px;
+            border: 1px solid #4a7a4a;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #a0ffa0;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5rem 1rem;
+            background-color: #1a201a;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            color: #a0ffa0;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            left: 25%;
+            bottom: -10px;
+            width: 50%;
+            height: 4px;
+            background-color: #70d670;
+            border-radius: 2px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background-color: rgba(28, 31, 28, 0.7);
+            border: 1px solid #3a4f3a;
+            border-radius: 8px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-color: #4a7a4a;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #70d670;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #a0ffa0;
+        }
+        
+        /* Map Preview Section */
+        .map-preview {
+            padding: 5rem 1rem;
+            background-color: #121612;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            gap: 2rem;
+            margin: 2rem auto;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .preview-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+        }
+        
+        .preview-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #a0ffa0;
+        }
+        
+        .preview-text ul {
+            list-style-position: inside;
+            margin-bottom: 1.5rem;
+        }
+        
+        .preview-text li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .preview-text li::before {
+            content: "•";
+            color: #70d670;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .preview-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            background-color: rgba(28, 31, 28, 0.5);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid #3a4f3a;
+        }
+        
+        .preview-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 5rem 1rem;
+            background-color: #1a201a;
+            text-align: center;
+        }
+        
+        .pricing-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            justify-content: center;
+        }
+        
+        .pricing-card {
+            background-color: rgba(28, 31, 28, 0.7);
+            border: 1px solid #3a4f3a;
+            border-radius: 8px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 350px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-color: #4a7a4a;
+        }
+        
+        .pricing-card.highlighted {
+            border: 2px solid #70d670;
+            position: relative;
+        }
+        
+        .highlighted-tag {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background-color: #70d670;
+            color: #121612;
+            padding: 0.25rem 1rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #a0ffa0;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #e0ffe0;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .pricing-features li::before {
+            content: "✓";
+            color: #70d670;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 1rem;
+            background-color: #0f1a0f; /* Fallback */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: rgba(18, 22, 18, 0.75);
+            border-radius: 12px;
+            border: 1px solid #4a7a4a;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #a0ffa0;
+        }
+        
+        .cta-content p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: rgba(28, 31, 28, 0.85);
+            padding: 3rem 1rem;
+            text-align: center;
+            border-top: 1px solid #444;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+            text-align: left;
+        }
+        
+        .footer-col h3 {
+            color: #a0ffa0;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-col a {
+            color: #e0ffe0;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-col a:hover {
+            color: #70d670;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            background-color: #2a322a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e0ffe0;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: #70d670;
+            color: #121612;
+            transform: translateY(-2px);
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #444;
+            text-align: center;
+            color: #a0a0a0;
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 0.5rem;
+            }
+            
+            .logo {
+                height: 50px;
+                margin-bottom: 0.5rem;
+            }
+            
+            nav ul {
+                gap: 0.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav a {
+                font-size: 0.9rem;
+                padding: 0.3rem 0.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .cta-button {
+                padding: 0.6rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .feature-card {
+                padding: 1.5rem;
+            }
+            
+            .preview-text,
+            .preview-image {
+                flex: 100%;
+            }
+            
+            .cta-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .footer-col {
+                flex: 100%;
+                text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/images/logo.png" alt="ScoutNS Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#map-preview">Preview</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="/app" class="cta-button" style="padding: 0.4rem 1rem;">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Nova Scotia Fishing Regulations <br> At Your Fingertips</h1>
+            <p>ScoutNS helps you navigate Nova Scotia's fishing zones and regulations with an interactive map and easy-to-understand rules. Never worry about compliance again - all the information you need is just a tap away.</p>
+            <a href="/app" class="cta-button">Get Started Free</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h2 class="section-title">Why Choose ScoutNS</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🗺️</div>
+                <h3>Interactive Maps</h3>
+                <p>Navigate through all fishing zones with our detailed interactive map. Tap on any water body to see specific regulations.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>Simplified Regulations</h3>
+                <p>We translate complex rules into easy-to-understand summaries, organized by species and special waters.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Mobile Friendly</h3>
+                <p>Works perfectly on your phone, even with spotty signal. Take ScoutNS with you on your fishing trips.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔔</div>
+                <h3>Season Alerts</h3>
+                <p>Get notified when fishing seasons open or close for your favorite species and locations.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💾</div>
+                <h3>Offline Access</h3>
+                <p>Save your favorite fishing spots and their regulations for offline viewing when you're out of cell range.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Species Filtering</h3>
+                <p>Filter regulations by the specific species you're targeting to quickly find relevant information.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-preview" id="map-preview">
+        <h2 class="section-title">See ScoutNS in Action</h2>
+        <div class="preview-container">
+            <div class="preview-text">
+                <h2>Interactive Fishing Zones</h2>
+                <p>ScoutNS makes it easy to understand where and when you can fish in Nova Scotia:</p>
+                <ul>
+                    <li>Color-coded waters for different regulation types</li>
+                    <li>Tap on any zone or water to see detailed rules</li>
+                    <li>Filter by species to see only relevant regulations</li>
+                    <li>Toggle between map view and regulation lists</li>
+                    <li>Mobile-optimized for use on the water</li>
+                </ul>
+                <a href="/app" class="cta-button">Try It Free</a>
+            </div>
+            <div class="preview-image">
+                <img src="/api/placeholder/600/400" alt="ScoutNS app preview" />
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <h2 class="section-title">Simple, Transparent Pricing</h2>
+        <div class="pricing-container">
+            <div class="pricing-card">
+                <h3>Free</h3>
+                <div class="price">$0</div>
+                <ul class="pricing-features">
+                    <li>Basic interactive map</li>
+                    <li>View all fishing zones</li>
+                    <li>Basic regulation lookup</li>
+                    <li>Species filtering</li>
+                    <li>Limited offline access</li>
+                </ul>
+                <a href="/app" class="cta-button">Get Started</a>
+            </div>
+            <div class="pricing-card highlighted">
+                <div class="highlighted-tag">Popular</div>
+                <h3>Pro</h3>
+                <div class="price">$4.99<span style="font-size: 1rem; font-weight: normal;"> / month</span></div>
+                <ul class="pricing-features">
+                    <li>Full interactive map</li>
+                    <li>Detailed water body information</li>
+                    <li>Complete offline access</li>
+                    <li>Season opening/closing alerts</li>
+                    <li>Save favorite fishing spots</li>
+                    <li>Advanced filtering options</li>
+                    <li>No advertisements</li>
+                </ul>
+                <a href="/app" class="cta-button">Go Pro</a>
+            </div>
+            <div class="pricing-card">
+                <h3>Annual</h3>
+                <div class="price">$39.99<span style="font-size: 1rem; font-weight: normal;"> / year</span></div>
+                <ul class="pricing-features">
+                    <li>All Pro features</li>
+                    <li>Save over 30%</li>
+                    <li>Priority support</li>
+                    <li>Early access to new features</li>
+                    <li>Detailed catch tracking (coming soon)</li>
+                </ul>
+                <a href="/app" class="cta-button">Subscribe & Save</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="get-started">
+        <div class="cta-content">
+            <h2>Ready to Simplify Fishing Regulations?</h2>
+            <p>Join thousands of Nova Scotia anglers who are using ScoutNS to fish with confidence. Get started today with our free tier and upgrade whenever you're ready.</p>
+            <a href="/app" class="cta-button">Create Free Account</a>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>ScoutNS</h3>
+                <p>Your companion for navigating Nova Scotia's fishing regulations with ease.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">f</a>
+                    <a href="#" class="social-icon">t</a>
+                    <a href="#" class="social-icon">i</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#map-preview">Preview</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <ul>
+                    <li>Email: info@scoutns.com</li>
+                    <li>Phone: (902) 555-1234</li>
+                    <li>Halifax, Nova Scotia</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 ScoutNS - All Rights Reserved</p>
+            <p><small>Not affiliated with Nova Scotia Department of Fisheries and Aquaculture. Always verify regulations with official sources.</small></p>
+        </div>
+    </footer>
+</body>
+</html>
