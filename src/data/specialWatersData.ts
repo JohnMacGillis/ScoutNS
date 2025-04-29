@@ -1,4 +1,4 @@
-import { SpecialWater } from '../pages/types';
+import { SpecialWater } from '../shared/types';
 
 // Helper function to convert coordinates from "lat, long" format to [long, lat] format
 const convertCoords = (coordStr: string): [number, number] => {
@@ -8,6 +8,120 @@ const convertCoords = (coordStr: string): [number, number] => {
 
 // Special waters data organized by zone
 const specialWatersData: Record<string, SpecialWater[]> = {
+  'RFA 2': [
+    // Extended Season Lakes
+    {
+      id: 'cameron-lake',
+      name: 'Cameron Lake',
+      area: 'Cameron Lake (Antigonish)',
+      coordinates: [-61.98083333333334, 45.514805555555554],
+      featureType: 'point',
+      regulationType: 'extended-season'
+    },
+    {
+      id: 'copper-lake',
+      name: 'Copper Lake',
+      area: 'Copper Lake (Antigonish)',
+      coordinates: [-61.985527777777776, 45.40361111111111],
+      featureType: 'point',
+      regulationType: 'extended-season'
+    },
+    {
+      id: 'gillis-lake-antigonish',
+      name: 'Gillis Lake',
+      area: 'Gillis Lake (Antigonish)',
+      coordinates: [-60.397666666666666, 46.05958333333333],
+      featureType: 'point',
+      regulationType: 'extended-season'
+    },
+    {
+      id: 'goose-harbour-lake',
+      name: 'Goose Harbour Lake',
+      area: 'Goose Harbour Lake (Guysborough)',
+      coordinates: [-61.41583333333333, 45.55152777777778],
+      featureType: 'point',
+      regulationType: 'extended-season'
+    },
+    {
+      id: 'mckeen-lake',
+      name: 'McKeen Lake',
+      area: 'McKeen Lake (Guysborough)',
+      coordinates: [-62.037388888888884, 45.29347222222222],
+      featureType: 'point',
+      regulationType: 'extended-season'
+    },
+    {
+      id: 'pringle-lake',
+      name: 'Pringle Lake',
+      area: 'Pringle Lake (Guysborough)',
+      coordinates: [-61.94983333333333, 45.37616666666667],
+      featureType: 'point',
+      regulationType: 'extended-season'
+    },
+    {
+      id: 'dryden-lake',
+      name: 'Dryden Lake',
+      area: 'Dryden Lake (Pictou)',
+      coordinates: [-62.777166666666666, 45.391333333333336],
+      featureType: 'point',
+      regulationType: 'extended-season'
+    },
+    {
+      id: 'gairloch-lake',
+      name: 'Gairloch Lake',
+      area: 'Gairloch Lake (Pictou)',
+      coordinates: [-62.83394444444445, 45.480222222222224],
+      featureType: 'point',
+      regulationType: 'extended-season'
+    },
+    
+    // Catch and Release Lakes
+    {
+      id: 'stewart-lake',
+      name: 'Stewart Lake',
+      area: 'Stewart Lake (Antigonish)',
+      coordinates: [-79.76386111111111, 45.14266666666666],
+      featureType: 'point',
+      regulationType: 'catch-release'
+    },
+    {
+      id: 'dobsons-lake',
+      name: 'Dobsons Lake',
+      area: 'Dobsons Lake (Guysborough)',
+      coordinates: [-61.200361111111114, 45.33519444444445],
+      featureType: 'point',
+      regulationType: 'catch-release'
+    },
+    
+    // St. Mary's River sections
+    {
+      id: 'st-marys-river-lower',
+      name: 'St. Mary\'s River - Lower Section',
+      area: 'St. Mary\'s River - Lower Section (Guysborough)',
+      featureType: 'linear',
+      coordinates: [
+        [-61.983492, 45.143351], // Starting point
+        [-61.978322, 45.175892], // Intermediate point 1
+        [-62.068798, 45.276507], // Intermediate point 2
+        [-62.062834, 45.299422]  // Ending point
+      ],
+      regulationType: 'special-season'
+    },
+    {
+      id: 'st-marys-river-upper',
+      name: 'St. Mary\'s River - Upper Section',
+      area: 'St. Mary\'s River - Upper Section (Guysborough)',
+      featureType: 'linear',
+      coordinates: [
+        [-62.062834, 45.299422], // Starting point
+        [-62.063417, 45.280000], // Intermediate point 1 (estimated)
+        [-62.063999, 45.255877], // Intermediate point 2
+        [-62.660334, 45.263666]  // Ending point
+      ],
+      regulationType: 'fly-only'
+    },
+  ],
+  
   'RFA 3': [
     // Lakes with Extended Season
     {
