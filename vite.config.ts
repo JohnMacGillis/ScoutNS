@@ -4,6 +4,18 @@ import react from '@vitejs/plugin-react';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  server: {
+    host: '0.0.0.0',
+    port: 3000,
+    strictPort: true,
+    allowedHosts: ['scoutns.com', 'www.scoutns.com', 'dev.scoutns.com']
+  },
+  preview: {
+    host: '0.0.0.0',
+    port: 3000,
+    strictPort: true,
+    allowedHosts: ['scoutns.com', 'www.scoutns.com', 'dev.scoutns.com']
+  },
   build: {
     // Increase chunk size warning limit
     chunkSizeWarningLimit: 2000,
