@@ -30,7 +30,7 @@ const specialWatersData: Record<string, SpecialWater[]> = {
       id: 'gillis-lake-antigonish',
       name: 'Gillis Lake',
       area: 'Gillis Lake (Antigonish)',
-      coordinates: [-60.397666666666666, 46.05958333333333],
+      coordinates: [-61.972855666666666, 45.525660000000000],
       featureType: 'point',
       regulationType: 'extended-season'
     },
